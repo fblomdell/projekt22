@@ -5,7 +5,7 @@ var text = '{ "movies": [' +
 var obj = jQuery.parseJSON(text);
 
 function addMovie(filmIndex){
-    alert("Right");
+
     $("main").append("<div class=\"movie\" id=\"" + filmIndex + "\">");
     $("#" + filmIndex).append("<h2>" + obj.movies[filmIndex].movieName + "</h2>");
     $("#" + filmIndex).append("<img src=\"" + obj.movies[filmIndex].mediumPoster + "\"  alt=\"poster\">");
@@ -17,7 +17,6 @@ function addMovie(filmIndex){
 }
 
 $(document).ready(function(){
-    alert("Ready");
     for(var i = 0; i < obj.movies.length; i++){
         addMovie(i);
     }

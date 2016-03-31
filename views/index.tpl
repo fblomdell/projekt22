@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="style.css" type="text/css" rel="stylesheet">
->>>>>>> alpha2-index:index.htm
+        <link href="{{ url('static', path='style.css') }}" charset="utf-8" type="text/css" rel="stylesheet">
         <meta charset="utf-8">
         <title>FilmDags</title>
-        <script type="text/javascript" src="{{ url('static', path='script.js') }}" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ url('static', path='location.js') }}" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="testscript2.js" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ url('static', path='gallery.js') }}" charset="utf-8"></script>
     </head>
     <body>
         <nav>
@@ -39,7 +38,7 @@
                 </div>
             </div>
             <div id="platsinfo">
-                <p>hejhej</p>
+                
             </div>
         </main>
         <footer>
