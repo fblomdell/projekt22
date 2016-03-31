@@ -1,0 +1,65 @@
+html{
+    height: 100%;
+}
+
+body{
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+header{
+    float: left;
+}
+nav{
+    text-align: center;
+    float: right;
+}
+main{
+    clear: both;
+    min-height: 500px;
+}
+.movie{
+    border: 1px solid black;
+    width: 200px;
+    text-align: center;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    height: 380px;
+    position: relative;
+}
+.movie img{
+    max-height: 300px;
+}
+.info{
+    position: absolute;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.info select{
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    float:left;
+}
+.info button{
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.movie h2{
+    margin: 2px;
+}
+.info p{
+    float: left;
+}
+
+footer{
+    text-align: center;
+    margin-top 15px;
+}
