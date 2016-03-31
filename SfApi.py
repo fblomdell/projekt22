@@ -16,6 +16,9 @@ def dummyMenu():
     elif choice == str(2):
         movieID = raw_input('enter movieID (ex. 10015019):')
         movieDetails(movieID)
+    elif choice == str(3):
+        getCities()
+        
         
     else:
         print'Invalid choice, enter #1-3 ONLY!'
@@ -110,6 +113,12 @@ def movieDetails(movieID):
     #prints unformatted json
     #print data
     dummyMenu()
+
+def getCities():
+    allCities = makeCall('cities')
+    print allCities
+    print len(allCities['cities'])
+    
 
 
 dummyMenu()

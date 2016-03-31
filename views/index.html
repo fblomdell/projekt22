@@ -5,29 +5,50 @@
         <script type="text/javascript" src="/static/script.js"></script>
         
         <style>
+            body{
+                width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            header{
+                float: left;
+            }
             nav{
                 text-align: center;
+                float: right;
+            }
+            main{
+                clear: both;
             }
             .movie{
                 border: 1px solid black;
                 width: 200px;
                 text-align: center;
-                padding-bottom: 15px;
                 float: left;
                 margin-left: 10px;
                 margin-right: 10px;
                 margin-top: 10px;
+                
             }
-            .movie select{
+            .info select{
                 padding: 5px;
                 margin-top: 10px;
+                margin-left: 5px;
+                margin-right: 5px;
+                float:left;
             }
-            .movie button{
+            .info button{
                 padding: 5px;
-                
+                margin-top: 10px;
+                margin-left: 5px;
+                margin-right: 5px;
+                float: right;
             }
             .movie h2{
                 margin: 2px;
+            }
+            .info p{
+                float: left;
             }
         </style>
         <meta charset="utf-8">
@@ -52,36 +73,41 @@
             <div class="movie">
                 <h2>Movie</h2>
                 <img src="http://placehold.it/200x300" alt="poster">
-                <select>
-                    <option value="" disabled selected>Tider</option>
-                    <option value="">20:00</option>
-                    <option value="">21:20</option>
-
-                </select>
-                <p>Stolar</p>
-                <button type="button">Boka</button>
+                <div class="info">
+                    <select>
+                        <option value="" disabled selected>Tider</option>
+                        <option value="">20:00</option>
+                        <option value="">21:20</option>
+                    </select>
+                    <p>Stolar</p>
+                    <button type="button">Boka</button>
+                </div>
             </div>
             <div class="movie">
                 <h2>Movie</h2>
                 <img src="http://placehold.it/200x300" alt="poster">
-                <select>
-                    <option value="" disabled selected>Tider</option>
-                    <option value="">20:00</option>
-                    <option value="">21:20</option>
-                </select>
-                <p>Stolar</p>
-                <button type="button">Boka</button>
+                <div class="info">
+                    <select>
+                        <option value="" disabled selected>Tider</option>
+                        <option value="">20:00</option>
+                        <option value="">21:20</option>
+                    </select>
+                    <p>Stolar</p>
+                    <button type="button">Boka</button>
+                </div>
             </div>
             <div class="movie">
                 <h2>Movie</h2>
                 <img src="http://placehold.it/200x300" alt="poster">
-                <select>
-                    <option value="" disabled selected>Tider</option>
-                    <option value="">20:00</option>
-                    <option value="">21:20</option>
-                </select>
-                <p>Stolar</p>
-                <button type="button">Boka</button>
+                <div class="info">
+                    <select>
+                        <option value="" disabled selected>Tider</option>
+                        <option value="">20:00</option>
+                        <option value="">21:20</option>
+                    </select>
+                    <p>Stolar</p>
+                    <button type="button">Boka</button>
+                </div>
             </div>
             <div id="platsinfo">
                 <p>hejhej</p>
