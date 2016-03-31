@@ -2,7 +2,7 @@
 <html>
     <head>
         <!--<link href=".css" type="text/css" rel="stylesheet"> -->
-        <script type="text/javascript" src="/static/script.js"></script>
+        <script type="text/javascript" src="{{ url('static', path='script.js') }}" charset="utf-8"></script>
         
         <style>
             body{
