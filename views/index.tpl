@@ -7,12 +7,33 @@
         <script type="text/javascript" src="{{ url('static', path='location.js') }}" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script type="text/javascript" src="{{ url('static', path='gallery.js') }}" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ url('static', path='cities.js') }}" charset="utf-8"></script>
+        <script>
+            var allCities = ["a", "b"];
+            //var allCities = {{!allCities}};
+            //console.log(allCities);
+            //alert(allCities);
+            var choice = document.getElementById("cityChoice");
+            $(document).ready(function(){
+                for(var i = 0; i < allCities.length; i++){
+                    city.innerHTML = allCities[i];
+                    city.value = allCities[i];
+                    alert(city);
+                    alert(allCities[i]);
+                    choice.appendChild(city);
+                    
+                    }
+            })
+    
+
+        
+        </script>
     </head>
     <body>
         <nav>
-            <select>
+            <select id="cityChoice">
                 <option value="" disabled selected>Stad</option>
-                <option value="">Malmö</option>
+                <option value=""></option>
                 <option value="">Göteborg</option>
                 <option value="">Stockholm</option>
             </select>
