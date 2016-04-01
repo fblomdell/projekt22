@@ -1,28 +1,5 @@
-﻿import requests, json
+﻿import requests, json, datetime
 # -*- coding: utf-8 -*-
-
-
-
-def dummyMenu():
-
-    print'**********************'
-    choice = raw_input('Menu:\n 1. All movies \n 2. specific movie(req ID)\n')
-    print'**********************'
-    
-    if choice == str(1):
-        cityID = 'MA' #MA = Malmö, BS = Borås osv
-        allMovies(cityID)
-        #print data
-    elif choice == str(2):
-        movieID = raw_input('enter movieID (ex. 10015019):')
-        movieDetails(movieID)
-    elif choice == str(3):
-        getCities()
-        
-        
-    else:
-        print'Invalid choice, enter #1-3 ONLY!'
-        dummyMenu()
 
 def auth():
     #username = 'SFbioAPI'
@@ -31,7 +8,7 @@ def auth():
 
     #URL to connect & authorize to server
     url = 'https://mobilebackend.sfbio.se/configurations/5/config/MA/testdevice/false/mobileid/22FE711F-ACC5-47A7-AAB7-67C7146C55C7'
-
+    
     headers = {
     'X-SF-Iphone-Version': '5.3.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
@@ -48,19 +25,10 @@ def auth():
         print 'Problem connecting to server'
         print 'response code: ' +str(response.status_code) 
 
-    #data = json.loads(response.text)
-    
-    #print data['movieName']#['movies'][0]['shortDescription']
-    #return response.status_code
- 
-
 def makeCall(urlPath):
-    
-    auth()
-    
     #baseurl + urlPath = complete url to server
     baseUrl = 'https://mobilebackend.sfbio.se/services/5/'
-
+    
     headers = {
     'X-SF-Iphone-Version': '5.3.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
@@ -73,56 +41,28 @@ def makeCall(urlPath):
         auth()
         response = requests.get(baseUrl+urlPath, headers=headers)
     
-    data = json.loads(response.text)
-
-    return data
-    #print 'moviename: ' +data['movieName']#['movies'][0]['shortDescription']
-    #return response.status_code
+    return json.loads(response.text)
 
 def allMovies(city):
-    
-    data = makeCall('movies/%s/extended' %(city))
-
-    movieList = []
-    for movie in data['movies']:
-        #print movie['movieName']
-        movieList.append(movie["movieName"]+' id: ' +movie['id'])
-
-    #data['movieInfoURL'] = direktlänk till json för specifik film
-
-    #loop list & print for easy read in console
-    for i in movieList:
-        print i
-
-    print 'antal filmer: ' +str(len(movieList))
-    #print movieList
-    dummyMenu()
+    return makeCall('movies/%s/extended' %(city))
 
 def movieDetails(movieID):
-
-    #MA = Malmö
-    data = makeCall('movies/MA/movieid/'+movieID)
-
-    print 'id: ' +str(data['id'])
-    print 'movieName: ' +data['movieName']
-    print 'genre: '+data['genreName']
-    print 'length: ' +str(data['formattedLength'])
-    print 'age: ' +data['age']
-    print 'short description: ' +data['shortDescription']
-
-    #prints unformatted json
-    #print data
-    dummyMenu()
+    return makeCall('movies/MA/movieid/'+movieID)
 
 def getCities():
-    allCities = makeCall('cities')
-    print allCities
-    print len(allCities['cities'])
-    
+    return makeCall('cities')
+
+def getTicketsOfMovie(cityId, movieId, date):
+    #all info om biografen, lediga platser, showdeatilurl, theatreID, visningstid, längd på film, titel osv
+    return makeCall('shows/%s/movieid/%s/day/%s'%(cityId, movieId, date)) #('MA','10015019','20160331'))
 
 
-dummyMenu()
+    #OBS OBS OBS!!!!!! uncomment to get price information:
+    #detailUrl = movieTicket['shows'][0]['showDetailURL']
+    #getTicketInformation(detailUrl)
+'''    
+def getTicketInformation(detailUrl):
 
-#auth()
-#makeCall('movies/MA/movieid/10015019')
+    return makeCall(detailUrl)
+'''
 
