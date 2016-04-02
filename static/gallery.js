@@ -1,9 +1,9 @@
 var text = '{ "movies": [' +
     '{"id": "31060046", "movieName": "The Revenant", "genreName": "Drama", "mediumPoster": "https://mobilebackend.sfbio.se/image/POSTER/200/-/31060046.jpg"},' +
     '{"id": "31060046", "movieName": "The X", "genreName": "Komedi", "mediumPoster": "https://mobilebackend.sfbio.se/image/POSTER/200/-/31060048.jpg"}]}';
-
+//var text = {{!getMovies}};
 var obj = jQuery.parseJSON(text);
-
+    
 function addMovie(filmIndex){
 
     $("main").append("<div class=\"movie\" id=\"" + filmIndex + "\">");
@@ -17,7 +17,15 @@ function addMovie(filmIndex){
 }
 
 $(document).ready(function(){
+
+    
     for(var i = 0; i < obj.movies.length; i++){
         addMovie(i);
     }
 });
+
+/*
+var text = '{ "movies": [' +
+    '{"id": "31060046", "movieName": "The Revenant", "genreName": "Drama", "mediumPoster": "https://mobilebackend.sfbio.se/image/POSTER/200/-/31060046.jpg"},' +
+    '{"id": "31060046", "movieName": "The X", "genreName": "Komedi", "mediumPoster": "https://mobilebackend.sfbio.se/image/POSTER/200/-/31060048.jpg"}]}';
+    */

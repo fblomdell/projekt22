@@ -7,14 +7,13 @@
         <script type="text/javascript" src="{{ url('static', path='location.js') }}" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script type="text/javascript" src="{{ url('static', path='gallery.js') }}" charset="utf-8"></script>
+        
+
     </head>
     <body>
         <nav>
-            <select>
+            <select id="cityChoice">
                 <option value="" disabled selected>Stad</option>
-                <option value="">Malmö</option>
-                <option value="">Göteborg</option>
-                <option value="">Stockholm</option>
             </select>
             <select>
                 <option value="" disabled selected>Biograf</option>
@@ -40,9 +39,34 @@
             <div id="platsinfo">
                 
             </div>
+            
+            <script>
+            var allCities = {{!allCities}};
+            allCities = allCities["cities"];
+            //jQuery.parseJSON(allCities);
+            //var allCities = {{!allCities}};
+            //console.log(allCities);
+            //alert(allCities);
+            var choice = document.getElementById("cityChoice");
+            console.log((JSON.stringify(allCities[0])));
+            $(document).ready(function(){ 
+                for(var i = 0; i < allCities.length; i++){
+                    var city = document.createElement('option');
+                    city.innerHTML = JSON.stringify(allCities[i]["name"].replace(/"/g, ""));
+                    city.value = allCities[i];
+                    //alert(city);
+                    //alert(allCities[i]);
+                    
+                    choice.appendChild(city);
+                    
+                    }
+            })
+        </script>
+            
         </main>
         <footer>
             <p>"Copyright" (C) 2016</p>
         </footer>
+        
     </body>
 </html>
