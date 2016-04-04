@@ -3,8 +3,8 @@ from SfApi import getCities
 import json
 
 @route("/")
-#@view("index")
 def index():
+<<<<<<< Updated upstream
     
     allCities = getCities()
     cityList = []
@@ -17,9 +17,11 @@ def index():
     return template('index', url=url, allCities=cityList)
     #return { "url": url }
 
+
 @route("/static/:path#.+#", name="static")
 def server_static(path):
 
     return static_file(path, root="static")
     
 run(host="localhost", port=8080, debug=True)
+
