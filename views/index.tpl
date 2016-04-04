@@ -17,9 +17,6 @@
                     <option value="city">{{city}}</option>
                 %end
             </select>
-            <select>
-                <option value="" disabled selected>Biograf</option>
-            </select>
         </nav>
         <header>
             <h1>FilmDags</h1>
@@ -45,5 +42,6 @@
         <footer>
             <p>"Copyright" (C) 2016</p>
         </footer>
+        
     </body>
 </html>
