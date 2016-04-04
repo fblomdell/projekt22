@@ -7,13 +7,7 @@ import json
 def index():
     
     allCities = getCities()
-    cityList = []
-    #allCities = json.dumps(allCities)
 
-    
-    #for city in allCities['cities']:
- #       cityList.append(city['name'])
-    
     return template('index', url=url, allCities=allCities)
     #return { "url": url }
 
