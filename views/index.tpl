@@ -11,12 +11,14 @@
     </head>
     <body>
         <nav>
-            <select id="cityChoice">
-                <option value="" disabled selected>Stad</option>
-                %for city in allCities:
-                    <option value="city">{{city}}</option>
-                %end
-            </select>
+            <form action="" method="get">
+                <select id="cityChoice" onchange="this.form.submit()">
+                    <option value="" disabled selected>Stad</option>
+                    %for city in allCities['cities']:
+                        <option type="submit" value="{{city['id']}}">{{city['name']}}</option>
+                    %end
+                </select>
+            </form>
         </nav>
         <header>
             <h1>FilmDags</h1>
