@@ -9,11 +9,11 @@ def index():
     allCities = getCities()
     cityList = []
     #allCities = json.dumps(allCities)
+
+    
     for city in allCities['cities']:
         cityList.append(city['name'])
-        
-        
-    #print allCities['cities']
+    
     return template('index', url=url, allCities=cityList)
     #return { "url": url }
 
