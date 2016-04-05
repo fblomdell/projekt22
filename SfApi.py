@@ -10,7 +10,7 @@ def auth():
     url = 'https://mobilebackend.sfbio.se/configurations/5/config/MA/testdevice/false/mobileid/22FE711F-ACC5-47A7-AAB7-67C7146C55C7'
     
     headers = {
-    'X-SF-Iphone-Version': '5.3.0',
+    'X-SF-Iphone-Version': '5.4.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
     'Authorization': 'Basic U0ZiaW9BUEk6YlNGNVBGSGNSNFoz'
     }
@@ -30,7 +30,7 @@ def makeCall(urlPath):
     baseUrl = 'https://mobilebackend.sfbio.se/services/5/'
     
     headers = {
-    'X-SF-Iphone-Version': '5.3.0',
+    'X-SF-Iphone-Version': '5.4.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
     'Authorization': 'Basic U0ZiaW9BUEk6YlNGNVBGSGNSNFoz'
     }

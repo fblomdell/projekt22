@@ -16,8 +16,7 @@ def index():
     
     return template('index', url=url, allCities=allCities)
 
-    name = form.getfirst('name', 'empty')
-    print name
+    
 
 
 @route("/static/:path#.+#", name="static")
@@ -25,6 +24,10 @@ def server_static(path):
 
     return static_file(path, root="static")
 
+@route("/cinema", method="post")
+def cinema():
+    name = request.forms.get('city')
+    print name
 
 run(host="localhost", port=8080, debug=True)
 
