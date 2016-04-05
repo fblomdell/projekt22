@@ -11,14 +11,30 @@
     </head>
     <body>
         <nav>
-            <form action="/cinema" id="best" method="post">
+            <form action="/" id="best" method="post">
                 <select id="cityChoice" onchange="this.form.submit()" name="city">
                     <option value="" disabled selected>Stad</option>
-                    %for city in allCities['cities']:
-                        <option value="{{city['id']}}">{{city['name']}}</option>
+                    %try:
+                        {{!myCityId}}
+                    %except NameError:
+                        %for city in allCities['cities']:
+                            <option value="{{city['id']}}">{{city['name']}}</option>
+                        %end
+                    %else: 
+                        %for city in allCities['cities']:
+                            %if getCityId == city['id']:
+                                <option value="{{city['id']}}" selected>{{city['name']}}</option>
+                            else:
+                                <option value="{{city['id']}}">{{city['name']}}</option>
+                            
+                            %end
+                        %end
+                    %end
+                    %end
                     %end
                 </select>
             </form>
+
         </nav>
         <header>
             <h1>FilmDags</h1>

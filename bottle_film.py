@@ -1,12 +1,6 @@
-
 from bottle import Bottle, run, route, template, url, view, static_file, request, response
-
 from SfApi import getCities
-import requests
 import json
-import cgi
-
-form = cgi.FieldStorage() # instantiate only once!
 
 @route("/")
 #@view("index")
@@ -16,18 +10,18 @@ def index():
     
     return template('index', url=url, allCities=allCities)
 
-    
-
-
 @route("/static/:path#.+#", name="static")
 def server_static(path):
 
     return static_file(path, root="static")
 
-@route("/cinema", method="post")
+@route("/", method="post")
 def cinema():
-    name = request.forms.get('city')
-    print name
+    
+    allCities = getCities()
+    getCityId = request.forms.get('city')
+    print getCityId
+    return template('index', url=url, allCities=allCities, getCityId=getCityId)
 
 run(host="localhost", port=8080, debug=True)
 
