@@ -1,4 +1,6 @@
+
 from bottle import Bottle, run, route, template, url, view, static_file, request, response
+
 from SfApi import getCities
 import requests
 import json
@@ -11,7 +13,7 @@ form = cgi.FieldStorage() # instantiate only once!
 def index():
     
     allCities = getCities()
-
+    
     return template('index', url=url, allCities=allCities)
 
     name = form.getfirst('name', 'empty')
@@ -22,7 +24,7 @@ def index():
 def server_static(path):
 
     return static_file(path, root="static")
-    
+
 
 run(host="localhost", port=8080, debug=True)
 

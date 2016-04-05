@@ -16,6 +16,7 @@
                     <option value="" disabled selected>Stad</option>
                     %for city in allCities['cities']:
                         <option type="submit" name="{{city['id']}}">{{city['name']}}</option>
+
                     %end
                    
                 </select>
