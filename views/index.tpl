@@ -11,12 +11,13 @@
     </head>
     <body>
         <nav>
-            <form action="" method="get">
+            <form action="bottle_film.py" method="get">
                 <select id="cityChoice" onchange="this.form.submit()">
                     <option value="" disabled selected>Stad</option>
                     %for city in allCities['cities']:
-                        <option type="submit" value="{{city['id']}}">{{city['name']}}</option>
+                        <option type="submit" name="{{city['id']}}">{{city['name']}}</option>
                     %end
+                   
                 </select>
             </form>
         </nav>
