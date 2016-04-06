@@ -15,16 +15,17 @@
                 <select id="cityChoice" onchange="this.form.submit()" name="city">
                     <option value="" disabled selected>Stad</option>
                     %try:
-                        {{!getCityId}}
+                        {{!cityID}}
+                    <script>console.log('hej')</script>
                     %except NameError:
                         %for city in allCities['cities']:
                             <option value="{{city['id']}}">{{city['name']}}</option>
                         %end
                     %else: 
                         %for city in allCities['cities']:
-                            %if getCityId == city['id']:
+                            %if cityID == city['id']:
                                 <option value="{{city['id']}}" selected>{{city['name']}}</option>
-                            else:
+                            %else:
                                 <option value="{{city['id']}}">{{city['name']}}</option>
                             
                             %end

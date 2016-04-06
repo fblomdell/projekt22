@@ -54,7 +54,7 @@ def getCities():
     return makeCall('cities')
 
 def getCinemas(cityID):
-    return makeCall('theatres/=%s' %(cityID))
+    return makeCall('theatres/%s' %(cityID))
 
 def getTicketsOfMovie(cityId, movieId, date):
     #all info om biografen, lediga platser, showdeatilurl, theatreID, visningstid, längd på film, titel osv
