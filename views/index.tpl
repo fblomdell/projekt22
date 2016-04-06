@@ -11,11 +11,11 @@
     </head>
     <body>
         <nav>
-            <form action="/" id="best" method="post">
+            <form action="/cinema" id="best" method="post">
                 <select id="cityChoice" onchange="this.form.submit()" name="city">
                     <option value="" disabled selected>Stad</option>
                     %try:
-                        {{!myCityId}}
+                        {{!getCityId}}
                     %except NameError:
                         %for city in allCities['cities']:
                             <option value="{{city['id']}}">{{city['name']}}</option>
