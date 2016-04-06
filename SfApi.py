@@ -28,7 +28,7 @@ def auth():
 def makeCall(urlPath):
     #baseurl + urlPath = complete url to server
     baseUrl = 'https://mobilebackend.sfbio.se/services/5/'
-    
+    print baseUrl+urlPath
     headers = {
     'X-SF-Iphone-Version': '5.4.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
@@ -43,14 +43,18 @@ def makeCall(urlPath):
     
     return json.loads(response.text)
 
-def allMovies(city):
+def getMovies(city):
+    #return all movies based on city
     return makeCall('movies/%s/extended' %(city))
 
-def movieDetails(movieID):
+def getMovieDetails(movieID):
     return makeCall('movies/MA/movieid/'+movieID)
 
 def getCities():
     return makeCall('cities')
+
+def getCinemas(cityID):
+    return makeCall('theatres/=%s' %(cityID))
 
 def getTicketsOfMovie(cityId, movieId, date):
     #all info om biografen, lediga platser, showdeatilurl, theatreID, visningstid, längd på film, titel osv
@@ -65,4 +69,11 @@ def getTicketInformation(detailUrl):
 
     return makeCall(detailUrl)
 '''
+#getCinemas('MA')
 
+'''
+    cityID = request.forms.get('city')
+    #cinemas = getCinemas(cityID)
+    print cityID
+    return template('index', url=url, getCities=getCities)#, cinemas=cinemas)
+'''
