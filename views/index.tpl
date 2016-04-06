@@ -16,20 +16,22 @@
                     <option value="" disabled selected>Stad</option>
                     %try:
                         {{!cityID}}
-                    <script>console.log('hej')</script>
                     %except NameError:
                         %for city in allCities['cities']:
                             <option value="{{city['id']}}">{{city['name']}}</option>
                         %end
                     %else: 
                         %for city in allCities['cities']:
+                            
                             %if cityID == city['id']:
                                 <option value="{{city['id']}}" selected>{{city['name']}}</option>
+                                
                             %else:
-                                <option value="{{city['id']}}">{{city['name']}}</option>
-                            
+                                <option value="{{city['id']}}">{{city['name']}}</option> 
+                            %end
                             %end
                         %end
+                            
                     %end
                     %end
                     %end
