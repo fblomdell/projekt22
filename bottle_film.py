@@ -1,5 +1,5 @@
 from bottle import Bottle, run, route, template, url, view, static_file, request, response
-from sfapi import getCities, getCinemas
+from SfApi import getCities, getCinemas
 import json
 
 @route("/")
@@ -20,10 +20,19 @@ def cinema():
     
     allCities = getCities()
     cityID = request.forms.get('city')
-    print getCinemas(cityID)
+    cinemaList = getCinemas(cityID)
+    print cinemaList
 
+    return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList)
+
+'''%route("/getCinema", method="post")
+def getCinema():
+
+    allCities = getCities()
+    cityID = request.forms.get('city')
+    
     return template('index', url=url, allCities=allCities, cityID=cityID)
-
+'''
 run(host="localhost", port=8080, debug=True)
 
 

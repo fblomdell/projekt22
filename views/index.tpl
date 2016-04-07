@@ -37,7 +37,24 @@
                     %end
                 </select>
             </form>
-
+            
+            <select name="cinema">
+                <option value="" disabled selected>Biograf</option>
+                %try:
+                    {{!cinemaList}}
+                %except NameError:
+                    <option value="" disabled selected>Biograf</option>
+                %else:
+                    %for cinema in cinemaList['theatres']:
+                        <option value="">{{cinemaList['name']}}</option>
+                    %end
+                %end
+                %end
+                %end
+            </select>
+               
+            
+            
         </nav>
         <header>
             <h1>FilmDags</h1>
