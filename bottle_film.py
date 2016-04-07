@@ -6,11 +6,11 @@ import json
 
 @route("/")
 #@view("index")
-def fuckoff():
+def index():
     
     allCities = getCities()
     print allCities
-    return template('fuckoff', url=url, allCities=allCities)
+    return template('index', url=url, allCities=allCities)
 
 @route("/static/:path#.+#", name="static")
 def server_static(path):
@@ -27,7 +27,7 @@ def cinema():
     
     print cinemaList
     
-    return template('fuckoff', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList)
+    return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList)
 
 '''%route("/getCinema", method="post")
 def getCinema():
