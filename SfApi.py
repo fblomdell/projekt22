@@ -7,7 +7,7 @@ def auth():
     #authorization = 'Basic U0ZiaW9BUEk6YlNGNVBGSGNSNFoz'
 
     #URL to connect & authorize to server
-    url = 'https://mobilebackend.sfbio.se/configurations/5/config/MA/testdevice/false/mobileid/22FE711F-ACC5-47A7-AAB7-67C7146C55C7'
+    url = 'https://mobilebackend.sfbio.se/configurations/5/config/MA/testdevice/false/mobileid/11FE711F-ACC5-47A7-AAB7-67C7146C55C7'
     
     headers = {
     'X-SF-Iphone-Version': '5.4.0',
@@ -40,7 +40,7 @@ def makeCall(urlPath):
     except:
         auth()
         response = requests.get(baseUrl+urlPath, headers=headers)
-    
+        
     return json.loads(response.text)
 
 def getMovies(city):
@@ -77,3 +77,4 @@ def getTicketInformation(detailUrl):
     print cityID
     return template('index', url=url, getCities=getCities)#, cinemas=cinemas)
 '''
+

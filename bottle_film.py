@@ -1,14 +1,16 @@
+# -*- coding: utf-8 -*-
+
 from bottle import Bottle, run, route, template, url, view, static_file, request, response
 from SfApi import getCities, getCinemas
 import json
 
 @route("/")
 #@view("index")
-def index():
+def fuckoff():
     
     allCities = getCities()
-    
-    return template('index', url=url, allCities=allCities)
+    print allCities
+    return template('fuckoff', url=url, allCities=allCities)
 
 @route("/static/:path#.+#", name="static")
 def server_static(path):
@@ -21,9 +23,11 @@ def cinema():
     allCities = getCities()
     cityID = request.forms.get('city')
     cinemaList = getCinemas(cityID)
+    
+    
     print cinemaList
-
-    return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList)
+    
+    return template('fuckoff', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList)
 
 '''%route("/getCinema", method="post")
 def getCinema():

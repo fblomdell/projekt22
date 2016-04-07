@@ -31,20 +31,25 @@
                                 
                             %else:
                                 <option value="{{city['id']}}">{{city['name']}}</option> 
-                            %end
-                            %end
-                    %end
-
+                            
+                            
                     %end
                     %end
-
-                        
+                    %end
                     
                 </select>
             </form>
             <select name="hej">
                 <option value="" disabled selected>Biograf</option>
-                
+                %try:
+                    {{!cinemaList}}
+                %except NameError:
+                    pass
+                %else:
+                    %for cinema in cinemaList['theatres']:
+                        <option value="">{{cinema['name']}}</option>
+                    %end
+                %end
             </select>
             
                
