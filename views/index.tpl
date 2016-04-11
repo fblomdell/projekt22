@@ -35,7 +35,7 @@
             <!-- Låda med dropdown-menyerna stad och biograf -->
             <div class="well cityCinemaBox">
                 <div class="form-group col-md-6">
-                    <form action="/cinema" method="post">
+                    <form action="/movies" method="post">
                         <select class="form-control" onchange="this.form.submit()" name="city">
                             <option value="" disabled selected>Stad</option>
                             %try:
@@ -57,21 +57,30 @@
                             %end
                             %end
                         </select>
+                        <select class="form-control" name="cinema" onchange="this.form.submit()">
+                            <option disabled selected>Biograf</option>
+                            %try:
+                                {{!cinemaList}}
+                            %except NameError:
+                                pass
+                            %else:
+                                %for cinema in cinemaList['theatres']:
+                                    %if movieCinema == cinema['id']:
+                                        <option value="{{cinema['id']}}" selected>{{cinema['name']}}</option>
+                                    %else:
+
+                                        <option value="{{cinema['id']}}">{{cinema['name']}}</option>
+                                    %end
+
+                                %end
+                                
+                            %end
+                        </select>
                     </form>
                </div>
+                
                 <div class="form-group col-md-6">
-                    <select class="form-control">
-                        <option disabled selected>Biograf</option>
-                        %try:
-                            {{!cinemaList}}
-                        %except NameError:
-                            pass
-                        %else:
-                            %for cinema in cinemaList['theatres']:
-                                <option value="">{{cinema['name']}}</option>
-                            %end
-                        %end
-                    </select>
+
                </div>
                 <!-- Knapp som när väl klickat visar lista på städer. För att lägga till städer krävs det att de läggs in som li-taggar
                 <div class="btn-group">

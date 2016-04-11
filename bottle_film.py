@@ -9,7 +9,6 @@ import json
 def index():
     
     allCities = getCities()
-    print allCities
     return template('index', url=url, allCities=allCities)
 
 @route("/static/:path#.+#", name="static")
@@ -25,18 +24,24 @@ def cinema():
     cinemaList = getCinemas(cityID)
     
     
-    print cinemaList
-    
     return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList)
 
-'''%route("/getCinema", method="post")
-def getCinema():
-
+@route("/movies", method="post")
+def cinema():
+    
     allCities = getCities()
     cityID = request.forms.get('city')
+    cinemaList = getCinemas(cityID)
     
-    return template('index', url=url, allCities=allCities, cityID=cityID)
-'''
+    movieCity = request.forms.get('city')
+    movieCinema = request.forms.get('cinema')
+    
+    print cityID, movieCinema
+
+    
+    return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, movieCinema=movieCinema)
+
+
 run(host="localhost", port=8080, debug=True)
 
 
