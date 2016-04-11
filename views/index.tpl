@@ -34,45 +34,47 @@
         <div class="container">
             <!-- Låda med dropdown-menyerna stad och biograf -->
             <div class="well cityCinemaBox">
-                <div class="form-group col-md-6">
-                    <form action="/cinema" method="post">
-                        <select class="form-control" onchange="this.form.submit()" name="city">
-                            <option value="" disabled selected>Stad</option>
-                            %try:
-                                {{!cityID}}
-                            %except NameError:
-                                %for city in allCities['cities']:
-                                    <option value="{{city['id']}}">{{city['name']}}</option>
+                <div class="rows">
+                    <div class="form-group col-md-6">
+                        <form action="/cinema" method="post">
+                            <select class="form-control" onchange="this.form.submit()" name="city">
+                                <option value="" disabled selected>Stad</option>
+                                %try:
+                                    {{!cityID}}
+                                %except NameError:
+                                    %for city in allCities['cities']:
+                                        <option value="{{city['id']}}">{{city['name']}}</option>
+                                    %end
+                                %else: 
+                                    %for city in allCities['cities']:
+
+                                        %if cityID == city['id']:
+                                            <option value="{{city['id']}}" selected>{{city['name']}}</option>
+
+                                        %else:
+                                            <option value="{{city['id']}}">{{city['name']}}</option> 
                                 %end
-                            %else: 
-                                %for city in allCities['cities']:
 
-                                    %if cityID == city['id']:
-                                        <option value="{{city['id']}}" selected>{{city['name']}}</option>
-
-                                    %else:
-                                        <option value="{{city['id']}}">{{city['name']}}</option> 
-                            %end
-
-                            %end
+                                %end
+                                %end
+                            </select>
+                        </form>
+                   </div>
+                    <div class="form-group col-md-6">
+                        <select class="form-control">
+                            <option disabled selected>Biograf</option>
+                            %try:
+                                {{!cinemaList}}
+                            %except NameError:
+                                pass
+                            %else:
+                                %for cinema in cinemaList['theatres']:
+                                    <option value="">{{cinema['name']}}</option>
+                                %end
                             %end
                         </select>
-                    </form>
-               </div>
-                <div class="form-group col-md-6">
-                    <select class="form-control">
-                        <option disabled selected>Biograf</option>
-                        %try:
-                            {{!cinemaList}}
-                        %except NameError:
-                            pass
-                        %else:
-                            %for cinema in cinemaList['theatres']:
-                                <option value="">{{cinema['name']}}</option>
-                            %end
-                        %end
-                    </select>
-               </div>
+                   </div>
+                </div>
                 <!-- Knapp som när väl klickat visar lista på städer. För att lägga till städer krävs det att de läggs in som li-taggar
                 <div class="btn-group">
                     <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
