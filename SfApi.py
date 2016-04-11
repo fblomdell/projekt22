@@ -28,7 +28,7 @@ def auth():
 def makeCall(urlPath):
     #baseurl + urlPath = complete url to server
     baseUrl = 'https://mobilebackend.sfbio.se/services/5/'
-    #print baseUrl+urlPath
+    print baseUrl+urlPath
     headers = {
     'X-SF-Iphone-Version': '5.4.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
@@ -77,7 +77,7 @@ def getTicketInformation(detailUrl):
 
     return makeCall(detailUrl)
 '''
-getCinemaMovies('109')
+#getCinemaMovies('109')
 
 '''
     cityID = request.forms.get('city')
