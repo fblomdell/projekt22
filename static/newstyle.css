@@ -46,3 +46,19 @@
 .cityCinemaBox{
     text-align: center;
 }
+
+.premiereList{
+    height: 250px;
+    overflow-y: auto;
+}
+
+.premiereList > .col-xs-12 > p{
+    display: inline-block;
+}
+
+.textNominator{
+    color: white;
+    background-color: black;
+    padding-left: 5px;
+    padding-right: 5px;
+}
