@@ -1,4 +1,4 @@
-﻿import requests, json, datetime
+﻿import requests, json, datetime, time
 # -*- coding: utf-8 -*-
 
 def auth():
@@ -28,13 +28,13 @@ def auth():
 def makeCall(urlPath):
     #baseurl + urlPath = complete url to server
     baseUrl = 'https://mobilebackend.sfbio.se/services/5/'
-    print baseUrl+urlPath
+    #print baseUrl+urlPath
     headers = {
     'X-SF-Iphone-Version': '5.4.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
     'Authorization': 'Basic U0ZiaW9BUEk6YlNGNVBGSGNSNFoz'
     }
-
+    
     try:
         response = requests.get(baseUrl+urlPath, headers=headers)
     except:
@@ -43,9 +43,17 @@ def makeCall(urlPath):
         
     return json.loads(response.text)
 
+def getCinemaMovies(cinemaID):
+ 
+    #todays date, format: YYYYMMDD (ex 20160411)
+    date = time.strftime('%Y%m%d')  
+    return makeCall('shows/MA/theatreid/%s/day/%s' %(cinemaID, date)) 
+
 def getMovies(city):
     #return all movies based on city
+    #print makeCall('movies/%s/extended' %(city))
     return makeCall('movies/%s/extended' %(city))
+    #print makeCall(movieList['movies'][0]['showListURL'])
 
 def getMovieDetails(movieID):
     return makeCall('movies/MA/movieid/'+movieID)
@@ -69,7 +77,7 @@ def getTicketInformation(detailUrl):
 
     return makeCall(detailUrl)
 '''
-#getCinemas('MA')
+getCinemaMovies('109')
 
 '''
     cityID = request.forms.get('city')
