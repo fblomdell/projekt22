@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <link rel="stylesheet" href="newstyle.css">
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         <title>FilmDags</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <!-- Optional theme -->
@@ -19,7 +19,7 @@
                 <span class="glyphicon glyphicon-chevron-down"></span>
               </button>
               <a class="navbar-brand" href="#">
-                    <img src="logo%20exempel.png" alt="Logo" width="110px">
+                    <img src="{{ url('static', path='logo%20exempel.png') }}" alt="Logo" width="110px">
                 </a>
             </div>
 
