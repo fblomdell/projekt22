@@ -43,11 +43,11 @@ def makeCall(urlPath):
         
     return json.loads(response.text)
 
-def getCinemaMovies(cinemaID):
+def getCinemaMovies(cityID, cinemaID):
  
     #todays date, format: YYYYMMDD (ex 20160411)
     date = time.strftime('%Y%m%d')  
-    return makeCall('shows/MA/theatreid/%s/day/%s' %(cinemaID, date)) 
+    return makeCall('shows/%s/theatreid/%s/day/%s' %(cityID, cinemaID, date)) 
 
 def getMovies(city):
     #return all movies based on city
