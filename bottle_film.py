@@ -34,14 +34,11 @@ def cinema():
     cinemaList = getCinemas(cityID)
     
     movieCity = request.forms.get('city')
-    movieCinema = request.forms.get('cinema')
+    chosenCinemaID = request.forms.get('cinema')
     
-    print cityID, movieCinema
+    print movieCity, chosenCinemaID
 
+    return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID)
     
-    return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, movieCinema=movieCinema)
-
-
+    
 run(host="localhost", port=8080, debug=True)
-
-
