@@ -23,7 +23,6 @@ def cinema():
     cityID = request.forms.get('city')
     cinemaList = getCinemas(cityID)
     
-    
     return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList)
 
 @route("/movies", method="post")

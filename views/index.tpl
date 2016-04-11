@@ -52,9 +52,8 @@
 
                                     %else:
                                         <option value="{{city['id']}}">{{city['name']}}</option> 
-                            %end
-
-                            %end
+                                    %end
+                                %end
                             %end
                         </select>
                         <select class="form-control" name="cinema" onchange="this.form.submit()">
@@ -64,28 +63,13 @@
                             %except NameError:
                                 pass
                             %else:
-                                %try:
-                                    {{!chosenCinemaID}}
-                                %except NameError:
-                                    %for cinema in cinemaList['theatres']:
-                                        
-                                        %if chosenCinemaID == cinema['id']:
-                                            <option value="{{cinema['id']}}" selected>{{cinema['name']}}</option>
-                                        %else:
-                                            <option value="{{cinema['id']}}">{{cinema['name']}}</option>
-                                        %end
-                                    %end
-                                %else:
-                                    %for cinema in cinemaList['theatres']:
-                                        %if str(chosenCinemaID) == str(cinema['id']):
-                                            <option value="{{cinema['id']}}" selected>{{cinema['name']}}</option>
-                                        %else:
-                                            <option value="{{cinema['id']}}">{{cinema['name']}}</option>
-                                        %end
-                            
+                                %for cinema in cinemaList['theatres']:
+                                    %if str(chosenCinemaID) == str(cinema['id']):
+                                        <option value="{{cinema['id']}}" selected>{{cinema['name']}}</option>
+                                    %else:
+                                        <option value="{{cinema['id']}}">{{cinema['name']}}</option>
                                     %end
                                 %end
-                                
                             %end
                         </select>
                     </form>
