@@ -56,6 +56,15 @@
     display: inline-block;
 }
 
+.trailerEmbed{
+    padding-top: 60px;
+}
+
+.modal-content > h4{
+    display: inline-block;
+    
+}
+
 .textNominator{
     color: white;
     background-color: black;
