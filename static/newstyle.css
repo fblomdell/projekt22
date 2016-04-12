@@ -65,6 +65,14 @@
     
 }
 
+.bookBtn{
+    float: right;
+}
+
+.premiereList > .col-xs-12 > p{
+    margin-top: 8px;
+}
+
 .textNominator{
     color: white;
     background-color: black;

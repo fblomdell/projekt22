@@ -126,8 +126,7 @@
                             </div>
                             <div class="col-lg-9">
                                 <h3 style="text-align: center; margin-top: 0px;">The Revenant</h3>
-                                <h4>Genre</h4>
-                                <h4>12 år</h4>
+                                <h4 style="text-align: center; margin-top: 0px;">Genre, 12 år</h4>
                                 <p>Under en expedition i den outforskade amerikanska vildmarken blir Hugh attackerad av en björn och lämnad att dö av de andra. I sin kamp att överleva får han utstå obeskrivlig sorg och att ha blivit bedragen av sin närmaste vän John Fitzgerald. Nu är han på jakt efter upprättelse i den bittra vintern och drivs bara av ren viljestyrka och kärlek till sin familj.\r\n \r\nRegi av Oscarbelönade Alejando G. Inarritu (Birdman, Babel).</p>
                             </div>
                         </div>
@@ -146,32 +145,25 @@
                                     <div class="col-xs-12">
                                         <p>21:00</p>
                                         <p class="textNominator">3D</p>
+                                        <button type="button" class="btn btn-primary" style="float: right;">Boka</button>
                                     </div>
                                     <div class="col-xs-12">
                                         <p>22:00</p>
                                         <p class="textNominator">3D</p>
                                         <p class="textNominator">Textad</p>
+                                        <button type="button" class="btn btn-primary" style="float: right;">Boka</button>
                                     </div>
                                     <h4>Biograf 2</h4>
                                     <div class="col-xs-12">
                                         <p>21:00</p>
+                                        <p class="textNominator">Textad</p>
+                                        <button type="button" class="btn btn-primary" style="float: right;">Boka</button>
                                     </div>
                                     <div class="col-xs-12">
                                         <p>22:00</p>
-                                    </div>
-                                    <h4>Biograf 3</h4>
-                                    <div class="col-xs-12">
-                                        <p>21:00</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p>22:00</p>
-                                    </div>
-                                    <h4>Biograf 4</h4>
-                                    <div class="col-xs-12">
-                                        <p>21:00</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p>22:00</p>
+                                        <p class="textNominator">3D</p>
+                                        <p class="textNominator">Textad</p>
+                                        <button type="button" class="btn btn-primary" style="float: right;">Boka</button>
                                     </div>
                                 </div>
                             </div>
