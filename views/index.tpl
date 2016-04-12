@@ -8,6 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <script src="{{ url('static', path='popuptest.js') }}"></script>
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         
     </head>
@@ -111,7 +112,7 @@
                 <div class="col-sm-3">
                     <div class="thumbnail movie">
                         <h4>The Revenant</h4>
-                        <img src="http://placehold.it/180x280" alt="The Revenant" data-toggle="modal" data-target="#modalLabel">
+                        <img src="http://placehold.it/180x280" alt="The Revenant" data-toggle="modal" data-target="#modalLabel" id="0">
                     </div>
                 </div>
             </div>
@@ -125,9 +126,9 @@
                                 <img src="http://placehold.it/120x200" alt="poster">
                             </div>
                             <div class="col-lg-9">
-                                <h3 style="text-align: center; margin-top: 0px;">The Revenant</h3>
-                                <h4 style="text-align: center; margin-top: 0px;">Genre, 12 år</h4>
-                                <p>Under en expedition i den outforskade amerikanska vildmarken blir Hugh attackerad av en björn och lämnad att dö av de andra. I sin kamp att överleva får han utstå obeskrivlig sorg och att ha blivit bedragen av sin närmaste vän John Fitzgerald. Nu är han på jakt efter upprättelse i den bittra vintern och drivs bara av ren viljestyrka och kärlek till sin familj.\r\n \r\nRegi av Oscarbelönade Alejando G. Inarritu (Birdman, Babel).</p>
+                                <h3 style="text-align: center; margin-top: 0px;" id="titleName"></h3>
+                                <h4 style="text-align: center; margin-top: 0px;" id="movieDetails"></h4>
+                                <p id="shortDesc"></p>
                             </div>
                         </div>
                         <div class="row">
@@ -141,7 +142,14 @@
                             <div class="col-lg-7">
                                 <h3 style="text-align: center; margin-top: 0px;">Tider</h3>
                                 <div class="rows premiereList">
-                                    <h4>Biograf 1</h4>
+                                    <h4 id="auditoriumName"></h4>
+                                    <div class="col-xs-12">
+                                        <p id="time"></p>
+                                        <p class="textNominator" id="movieTag"></p>
+                                        <button type="button" class="btn btn-primary" style="float: right;">Boka</button>
+                                    </div>
+                                    
+                                    <!--<h4>Biograf 1</h4>
                                     <div class="col-xs-12">
                                         <p>21:00</p>
                                         <p class="textNominator">3D</p>
@@ -152,19 +160,7 @@
                                         <p class="textNominator">3D</p>
                                         <p class="textNominator">Textad</p>
                                         <button type="button" class="btn btn-primary" style="float: right;">Boka</button>
-                                    </div>
-                                    <h4>Biograf 2</h4>
-                                    <div class="col-xs-12">
-                                        <p>21:00</p>
-                                        <p class="textNominator">Textad</p>
-                                        <button type="button" class="btn btn-primary" style="float: right;">Boka</button>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p>22:00</p>
-                                        <p class="textNominator">3D</p>
-                                        <p class="textNominator">Textad</p>
-                                        <button type="button" class="btn btn-primary" style="float: right;">Boka</button>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>
