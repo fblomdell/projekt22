@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         <title>FilmDags</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         
     </head>
     <body>
@@ -19,7 +19,7 @@
                 <span class="glyphicon glyphicon-chevron-down"></span>
               </button>
               <a class="navbar-brand" href="#">
-                    <img src="{{ url('static', path='logo%20exempel.png') }}" alt="Logo" width="110px">
+                    <img src="{{ url('static', path='logoexempel.png') }}" alt="Logo" width="110px">
                 </a>
             </div>
 
@@ -34,6 +34,7 @@
         <div class="container">
             <!-- Låda med dropdown-menyerna stad och biograf -->
             <div class="well cityCinemaBox">
+<<<<<<< HEAD
                 <div class="rows">
                     <div class="form-group col-md-6">
                         <form action="/cinema" method="post">
@@ -47,10 +48,25 @@
                                     %end
                                 %else: 
                                     %for city in allCities['cities']:
+=======
+                <form action="/movies" method="post">
+                    <div class="form-group col-md-6">
+                        <select class="form-control" onchange="this.form.submit()" name="city">
+                            <option value="" disabled selected>Stad</option>
+                            %try:
+                                {{!cityID}}
+                            %except NameError:
+                                %for city in allCities['cities']:
+                                    <option value="{{city['id']}}">{{city['name']}}</option>
+                                %end
+                            %else: 
+                                %for city in allCities['cities']:
+>>>>>>> origin/development
 
                                         %if cityID == city['id']:
                                             <option value="{{city['id']}}" selected>{{city['name']}}</option>
 
+<<<<<<< HEAD
                                         %else:
                                             <option value="{{city['id']}}">{{city['name']}}</option> 
                                 %end
@@ -75,6 +91,34 @@
                         </select>
                    </div>
                 </div>
+=======
+                                    %else:
+                                        <option value="{{city['id']}}">{{city['name']}}</option> 
+                                    %end
+                                %end
+                            %end
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <select class="form-control" name="cinema" onchange="this.form.submit()">
+                            <option disabled selected>Biograf</option>
+                            %try:
+                                {{!cinemaList}}
+                            %except NameError:
+                                pass
+                            %else:
+                                %for cinema in cinemaList['theatres']:
+                                    %if str(chosenCinemaID) == str(cinema['id']):
+                                        <option value="{{cinema['id']}}" selected>{{cinema['name']}}</option>
+                                    %else:
+                                        <option value="{{cinema['id']}}">{{cinema['name']}}</option>
+                                    %end
+                                %end
+                            %end
+                        </select>
+                    </div>
+                </form>
+>>>>>>> origin/development
                 <!-- Knapp som när väl klickat visar lista på städer. För att lägga till städer krävs det att de läggs in som li-taggar
                 <div class="btn-group">
                     <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -102,9 +146,7 @@
                     </ul>
                 </div>
                 -->
-                
-                <h1>Royal</h1>
-                
+                <h1>Biograf</h1>
             </div>
             
             <!-- Denna div visar en rad med thumbnails. 4 videos kan få plats på en rad (går att ändra enkelt) -->
@@ -145,8 +187,50 @@
                                 <h3 style="text-align: center; margin-top: 0px;">The Revenant</h3>
                                 <p>Under en expedition i den outforskade amerikanska vildmarken blir Hugh attackerad av en björn och lämnad att dö av de andra. I sin kamp att överleva får han utstå obeskrivlig sorg och att ha blivit bedragen av sin närmaste vän John Fitzgerald. Nu är han på jakt efter upprättelse i den bittra vintern och drivs bara av ren viljestyrka och kärlek till sin familj.\r\n \r\nRegi av Oscarbelönade Alejando G. Inarritu (Birdman, Babel).</p>
                             </div>
+                            <div class="col-xs-8">
+                                <h3 style="text-align: center; margin-top: 0px;">Tider</h3>
+                                <div class="rows premiereList">
+                                    <h4>Biograf 1</h4>
+                                    <div class="col-xs-12">
+                                        <p>21:00</p>
+                                        <p class="textNominator">3D</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p>22:00</p>
+                                        <p class="textNominator">3D</p>
+                                        <p class="textNominator">Textad</p>
+                                    </div>
+                                    <h4>Biograf 2</h4>
+                                    <div class="col-xs-12">
+                                        <p>21:00</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p>22:00</p>
+                                    </div>
+                                    <h4>Biograf 3</h4>
+                                    <div class="col-xs-12">
+                                        <p>21:00</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p>22:00</p>
+                                    </div>
+                                    <h4>Biograf 4</h4>
+                                    <div class="col-xs-12">
+                                        <p>21:00</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p>22:00</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <video class="embed-responsive-item" controls width="500px">
+                                    <source src="http://aka-m-p.maxplatform.com/20/57/78/HD-720p_1280x720_FnjtoI_1_se_1_50063_80210_120589_1111.mp4?u=2_105462">
+                                </video>
+                            </div>
+                            <!-- TODO: När knappen klickas så ska videon pausas -->
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
                     </div>
