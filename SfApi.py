@@ -1,4 +1,4 @@
-﻿import requests, json, datetime
+﻿import requests, json, datetime, time
 # -*- coding: utf-8 -*-
 
 def auth():
@@ -7,10 +7,10 @@ def auth():
     #authorization = 'Basic U0ZiaW9BUEk6YlNGNVBGSGNSNFoz'
 
     #URL to connect & authorize to server
-    url = 'https://mobilebackend.sfbio.se/configurations/5/config/MA/testdevice/false/mobileid/22FE711F-ACC5-47A7-AAB7-67C7146C55C7'
+    url = 'https://mobilebackend.sfbio.se/configurations/5/config/MA/testdevice/false/mobileid/11FE711F-ACC5-47A7-AAB7-67C7146C55C7'
     
     headers = {
-    'X-SF-Iphone-Version': '5.3.0',
+    'X-SF-Iphone-Version': '5.4.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
     'Authorization': 'Basic U0ZiaW9BUEk6YlNGNVBGSGNSNFoz'
     }
@@ -28,29 +28,41 @@ def auth():
 def makeCall(urlPath):
     #baseurl + urlPath = complete url to server
     baseUrl = 'https://mobilebackend.sfbio.se/services/5/'
-    
+    print baseUrl+urlPath
     headers = {
-    'X-SF-Iphone-Version': '5.3.0',
+    'X-SF-Iphone-Version': '5.4.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
     'Authorization': 'Basic U0ZiaW9BUEk6YlNGNVBGSGNSNFoz'
     }
-
+    
     try:
         response = requests.get(baseUrl+urlPath, headers=headers)
     except:
         auth()
         response = requests.get(baseUrl+urlPath, headers=headers)
-    
+        
     return json.loads(response.text)
 
-def allMovies(city):
-    return makeCall('movies/%s/extended' %(city))
+def getCinemaMovies(cityID, cinemaID):
+ 
+    #todays date, format: YYYYMMDD (ex 20160411)
+    date = time.strftime('%Y%m%d')  
+    return makeCall('shows/%s/theatreid/%s/day/%s' %(cityID, cinemaID, date)) 
 
-def movieDetails(movieID):
+def getMovies(city):
+    #return all movies based on city
+    #print makeCall('movies/%s/extended' %(city))
+    return makeCall('movies/%s/extended' %(city))
+    #print makeCall(movieList['movies'][0]['showListURL'])
+
+def getMovieDetails(movieID):
     return makeCall('movies/MA/movieid/'+movieID)
 
 def getCities():
     return makeCall('cities')
+
+def getCinemas(cityID):
+    return makeCall('theatres/%s' %(cityID))
 
 def getTicketsOfMovie(cityId, movieId, date):
     #all info om biografen, lediga platser, showdeatilurl, theatreID, visningstid, längd på film, titel osv
@@ -64,5 +76,13 @@ def getTicketsOfMovie(cityId, movieId, date):
 def getTicketInformation(detailUrl):
 
     return makeCall(detailUrl)
+'''
+#getCinemaMovies('109')
+#auth()
+'''
+    cityID = request.forms.get('city')
+    #cinemas = getCinemas(cityID)
+    print cityID
+    return template('index', url=url, getCities=getCities)#, cinemas=cinemas)
 '''
 
