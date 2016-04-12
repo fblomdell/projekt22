@@ -78,7 +78,7 @@ def getTicketInformation(detailUrl):
     return makeCall(detailUrl)
 '''
 #getCinemaMovies('109')
-
+#auth()
 '''
     cityID = request.forms.get('city')
     #cinemas = getCinemas(cityID)
