@@ -29,7 +29,7 @@ def cinema():
         return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID)
     else:
         movieList = getCinemaMovies(cityID, chosenCinemaID)
-        print len(movieList['shows'])
+        print movieList['shows']
         return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID, movieList=movieList)
     
     
