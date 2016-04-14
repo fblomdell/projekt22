@@ -48,8 +48,7 @@
 }
 
 .premiereList{
-    height: 250px;
-    overflow-y: auto;
+    
 }
 
 .premiereList > .col-xs-12 > p{

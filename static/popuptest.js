@@ -51,7 +51,7 @@ var text = '{ "shows": [{' +
 	'"theatreName": "Filmstaden Storgatan",' +
 	'"time": "23:20",' +
 	'"timeMs": 1460402400000,' +
-	'"title": "10 Cloverfield Lane"' +
+	'"title": "The Revenant"' +
 '}]}';
 
 var obj = jQuery.parseJSON(text);
@@ -88,8 +88,13 @@ function updateModalTime(filmIndex){
 }
 
 $(document).ready(function(){
+    $('body').on('hidden.bs.modal', '.modal', function () {
+        $('video').trigger('pause');
+    });
     $("#0").click = updateModalInfo(0);
     for(var i = 0; i < obj.shows.length; i++){
         updateModalTime(i);
     }
 });
+
+
