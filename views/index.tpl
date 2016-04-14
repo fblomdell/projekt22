@@ -109,20 +109,22 @@
             
             <!-- Denna div visar en rad med thumbnails. 4 videos kan få plats på en rad (går att ändra enkelt) -->
             <div class="row">
-                <div class="col-sm-3">
+                
                     %try:
                         <!--{{!movieList}}-->
                     %except NameError:
                         <!--pass-->
                     %else:
                         %for movie in movieList['shows']:
-                            <div class="thumbnail movie">
-                                <h4>{{!movie['title']}}</h4>
-                                <img src="http://placehold.it/180x280" alt="The Revenant" data-toggle="modal" data-target="#modalLabel" id="0">
+                            <div class="col-sm-3">
+                                <div class="thumbnail movie">
+                                    <h4>{{!movie['title']}}</h4>
+                                    <img src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['movieId']}}.jpg" alt="The Revenant" data-toggle="modal" data-target="#modalLabel" id="{{!movie['movieId']}}">
+                                </div>
                             </div>
                         %end
                     %end
-                </div>
+                
             </div>
             
             <!-- En modal visas när användaren klickar på filmpostern -->
