@@ -141,13 +141,15 @@
                             </div>
                             <div class="col-lg-7">
                                 <h3 style="text-align: center; margin-top: 0px;">Tider</h3>
-                                <div class="rows premiereList">
+                                <div class="rows premiereList" id="timeList">
+                                    <!-- ingen biograf vald-->
                                     <h4 id="auditoriumName"></h4>
+                                    <!-- this to be created for every show
                                     <div class="col-xs-12">
                                         <p id="time"></p>
                                         <p class="textNominator" id="movieTag"></p>
                                         <button type="button" class="btn btn-primary" style="float: right;">Boka</button>
-                                    </div>
+                                    </div>-->
                                     
                                     <!--<h4>Biograf 1</h4>
                                     <div class="col-xs-12">
