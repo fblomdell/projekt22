@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from bottle import Bottle, run, route, template, url, view, static_file, request, response
-from SfApi import getCities, getCinemas, getCinemaMovies
+from SfApi import getCities, getCinemas, getCinemaMovies, getMovieDetails
 import json
 
 @route("/")
@@ -31,10 +31,20 @@ def cinema():
         movieList = getCinemaMovies(cityID, chosenCinemaID)
         print len(movieList['shows'])
         return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID, movieList=movieList)
-    
+
+'''
+Fixa upplösning för poster
+'''
+def upgrade_poster(imageURL):
+    newURL = imageURL.replace("75", "500", 1)
+    return newURL
+
+
 @route("/movieInfo/", method="post")
-def newMovieWindow():
+def new_movie_window():
     movieId = request.forms.get('movieid')
-    return str(movieId)
-    
+    movieDetails = getMovieDetails(movieId)
+    newPoster = upgrade_poster(movieDetails['mediumPoster'])
+    return template('movie', url=url, movieInfo=movieDetails, image=newPoster)
+
 run(host="localhost", port=8080, debug=True)
