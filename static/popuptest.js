@@ -56,45 +56,28 @@ var text = '{ "shows": [{' +
 
 var obj = jQuery.parseJSON(text);
 
-function updateModalInfo(filmIndex){
-    $("#titleName").text(obj.shows[filmIndex].title);
-    $("#movieDetails").text('Drama, 15 år');
-    $("#shortDesc").text(obj.shows[filmIndex].title);
-}
+function submitMoviePost(val){    
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", '/movieInfo/');
+    var hiddenField = document.createElement("input");
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", "movieid");
+    hiddenField.setAttribute("value", val);
 
-function updateModalTime(filmIndex){
-    /*$("#titleName").text(obj.movies[index].title);
-    $("#movieDetails").text('Drama, 15 år');
-    $("#shortDesc").text(obj.movies[index].title);
-    $("#auditoriumName").text(obj.movies[index].auditoriumName);
-    $("#time").text(obj.movies[index].time);
-    if(obj.movies[index].tags[0].tagName == "Subtitled"){
-        $("#movieTag").text("Textad");
-    }
-    alert("Updated");*/
-    var newIndex = filmIndex + 1;
-    
-    if(obj.shows[filmIndex].title == "The Revenant"){
-        $("#timeList").append('<div class="col-xs-12" id="' + newIndex + '"></div>');
-        $("#" + newIndex).append('<p>' + obj.shows[filmIndex].time + '</p>');
-        if(obj.shows[filmIndex].tags[0].tagName == "Subtitled"){
-            $("#" + newIndex).append(' <p class="textNominator">Textad</p>');
-        }
-        else if(obj.shows[filmIndex].tags[0].tagName == "3D"){
-            $("#" + newIndex).append(' <p class="textNominator">3D</p>');
-        }
-        $("#" + newIndex).append('<button type="button" class="btn btn-primary" style="float: right;">Boka</button>');
-    }
+    form.appendChild(hiddenField);
+
+    document.body.appendChild(form);
+    form.submit();
 }
 
 $(document).ready(function(){
     $('body').on('hidden.bs.modal', '.modal', function () {
         $('video').trigger('pause');
     });
-    $("#0").click = updateModalInfo(0);
-    for(var i = 0; i < obj.shows.length; i++){
-        updateModalTime(i);
-    }
+    //for(var i = 0; i < obj.shows.length; i++){
+    //    updateModalTime(i);
+    //}
 });
 
 

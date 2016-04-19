@@ -80,25 +80,27 @@
                         <!--pass-->
                     %else:
                         %for movie in movieList['shows']:
-                            <div class="col-sm-3">
-                                <div class="thumbnail movie"data-toggle="modal" data-target="#modalLabel" id="{{!movie['movieId']}}">
-                                   
-                                    
-                                <div class="hovereffect">
-                                    <img src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['movieId']}}.jpg" alt="The Revenant">
-                                    
-                                    <div class="overlay">
-                                        <h4>{{!movie['title']}}</h4>
-                                        
+                                <div class="col-sm-3">
+                                        <div class="thumbnail movie"data-toggle="modal" data-target="#modalLabel" id="{{!movie['movieId']}}" onclick="submitMoviePost({{!movie['movieId']}})">
+
+                                        <div class="hovereffect">
+                                            <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['movieId']}}.jpg" alt="{{!movie['title']}}">
+                                            <div class="overlay">
+                                                <h4>{{!movie['title']}}</h4>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                </div>                                   
-                            </div>
                         %end
                     %end
-                
+                <div class="col-sm-3">
+                    <form method="post" action="/movieInfo/" name="testForm2">
+                        <input type="hidden" value="Hello" name="movieid">
+                        <input type="submit" name="Click">
+                    </form>
+                </div>
             </div>
-            
             <!-- En modal visas när användaren klickar på filmpostern -->
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modalLabel">
                 <div class="modal-dialog modal-lg modalPopup">
