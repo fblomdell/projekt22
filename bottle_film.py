@@ -32,6 +32,9 @@ def cinema():
         print len(movieList['shows'])
         return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID, movieList=movieList)
     
-    
+@route("/movieInfo/", method="post")
+def newMovieWindow():
+    movieId = request.forms.get('movieid')
+    return str(movieId)
     
 run(host="localhost", port=8080, debug=True)
