@@ -55,10 +55,12 @@ var text = '{ "shows": [{' +
 '}]}';
 
 var obj = jQuery.parseJSON(text);
+var a;
 
 function submitMoviePost(val){    
     var form = document.createElement("form");
     form.setAttribute("method", "post");
+    form.setAttribute("target", "_blank");
     form.setAttribute("action", '/movieInfo/');
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
@@ -71,6 +73,25 @@ function submitMoviePost(val){
     form.submit();
 }
 
+function loadPopup(movieId){    
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", '/movieInfo/');
+    var hiddenField = document.createElement("input");
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", "movieid");
+    form.setAttribute("onsubmit", "alert('Hello')");
+    hiddenField.setAttribute("value", movieId);
+    form.appendChild(hiddenField);
+    document.body.appendChild(form);
+    
+    form.submit();
+}
+function target_popup(form) {
+    window.open('redir', 'formpopup', 'width=400,height=400,resizeable,scrollbars');
+    form.target = 'formpopup';
+    alert("Done");
+}
 $(document).ready(function(){
     $('body').on('hidden.bs.modal', '.modal', function () {
         $('video').trigger('pause');

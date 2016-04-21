@@ -6,7 +6,7 @@
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="{{ url('static', path='popuptest.js') }}"></script>
-        
+        <script src="{{ url('static', path='geo.js') }}"></script>
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
@@ -83,23 +83,25 @@
                             %for movieID in sortedList:
                                 %if str(movieID) == str(movie['id']):
                                     <div class="col-sm-3">
-                                        <div class="thumbnail movie"data-toggle="modal" data-target="#modalLabel" id="{{!movie['id']}}" onclick="submitMoviePost({{!movie['id']}})">
+                                       <form action="redir" method="post" onsubmit="target_popup(this)">
+                                           <input type="hidden" value="{{movie['id']}}" name="movieId">
+                                            <div class="thumbnail movie" id="{{!movie['id']}}">
 
-                                            <div class="hovereffect">
-                                                <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['id']}}.jpg" alt="{{!movie['movieName']}}">
-                                                <div class="overlay">
-                                                    <h4>{{!movie['movieName']}}</h4>
-
+                                                <div class="hovereffect">
+                                                    <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['id']}}.jpg" alt="{{!movie['movieName']}}">
+                                                    <div class="overlay">
+                                                        <h4>{{!movie['movieName']}}</h4>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        </div>
-                               %end
+                                        </form>
+                                    </div>
+                                %end
                            %end     
                         %end
                     %end
-                
             </div>
+                               
         </div>
         
         <!-- Latest compiled and minified JavaScript -->
