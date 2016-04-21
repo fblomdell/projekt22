@@ -80,11 +80,10 @@ function loadPopup(movieId){
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
     hiddenField.setAttribute("name", "movieid");
-    form.setAttribute("onsubmit", "alert('Hello')");
     hiddenField.setAttribute("value", movieId);
+    target_popup(form);
     form.appendChild(hiddenField);
     document.body.appendChild(form);
-    
     form.submit();
 }
 function target_popup(form) {

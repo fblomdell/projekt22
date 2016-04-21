@@ -17,35 +17,34 @@
         <div class="container" style="color: white; margin-left: auto; margin-right: auto;">
             <script>
                 $(document).ready(function(){
-    //This sessionStorage.getItem(); is also a predefined function in javascript
-    //will retrieve session and get the value;
+                    //This code is old
                     /*var a = sessionStorage.getItem("sent");
                     
                     var form = document.createElement("form");
-                form.setAttribute("method", "post");
-                form.setAttribute("action", '/movieInfo/');
-                var hiddenField = document.createElement("input");
-                hiddenField.setAttribute("type", "hidden");
-                hiddenField.setAttribute("name", "movieid");
-                hiddenField.setAttribute("value", a);
-                form.appendChild(hiddenField);
+                    form.setAttribute("method", "post");
+                    form.setAttribute("action", '/movieInfo/');
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", "movieid");
+                    hiddenField.setAttribute("value", a);
+                    form.appendChild(hiddenField);
 
-                document.body.appendChild(form);
-                form.submit();
-                });    */
-                /*
-                var form = document.createElement("form");
-                form.setAttribute("method", "post");
-                form.setAttribute("target", "_blank");
-                form.setAttribute("action", '/movieInfo/');
-                var hiddenField = document.createElement("input");
-                hiddenField.setAttribute("type", "hidden");
-                hiddenField.setAttribute("name", "movieid");
-                hiddenField.setAttribute("value", movieId);
-                form.appendChild(hiddenField);
+                    document.body.appendChild(form);
+                    form.submit();
+                    });    */
+                    /*
+                    var form = document.createElement("form");
+                    form.setAttribute("method", "post");
+                    form.setAttribute("target", "_blank");
+                    form.setAttribute("action", '/movieInfo/');
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", "movieid");
+                    hiddenField.setAttribute("value", movieId);
+                    form.appendChild(hiddenField);
 
-                document.body.appendChild(form);
-                form.submit();
+                    document.body.appendChild(form);
+                    form.submit();
                 */
             </script>
         </div>

@@ -82,9 +82,7 @@
                         %for movie in movieList['movies']:
                             %for movieID in sortedList:
                                 %if str(movieID) == str(movie['id']):
-                                    <div class="col-sm-3">
-                                       <form action="redir" method="post" onsubmit="target_popup(this)">
-                                           <input type="hidden" value="{{movie['id']}}" name="movieId">
+                                    <div class="col-sm-3" onclick="loadPopup({{movie['id']}})">
                                             <div class="thumbnail movie" id="{{!movie['id']}}">
 
                                                 <div class="hovereffect">
@@ -94,7 +92,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
                                     </div>
                                 %end
                            %end     
