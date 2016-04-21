@@ -104,12 +104,6 @@
                                 
                         %end
                     %end
-                <div class="col-sm-3">
-                    <form method="post" action="/movieInfo/" name="testForm2">
-                        <input type="hidden" value="Hello" name="movieid">
-                        <input type="submit" name="Click">
-                    </form>
-                </div>
             </div>
         </div>
         

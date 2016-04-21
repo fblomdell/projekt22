@@ -11,15 +11,15 @@
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
         
-        <title>FilmDags</title>
+        <title>{{movieInfo['movieName']}} - FilmDags</title>
        
     </head>
     <body>
         <div class="container" style="color: white; margin-left: auto; margin-right: auto;">
             <div class="row">
-                            <div class="col-lg-12" id="posterOverlay" style="background-image: url('{{image}}')">
-                                <h1 id="posterTitle">{{movieInfo['movieName']}}</h1>
-                            </div>
+                <div class="col-lg-12" id="posterOverlay" style="background-image: url('{{image}}')">
+                </div>
+                <h1 id="posterTitle">{{movieInfo['movieName']}}</h1>
                         </div>
                         <div class="row">
                             <div class="col-lg-5">
@@ -31,8 +31,8 @@
                             </div>
                             <div class="col-lg-7">
                                 <h2>{{movieInfo['genreName']}}, {{movieInfo['age']}}</h2>
-                                <span style="float:left; width: 50%;">
-                                    <h3>Skådespelare</h3>
+                                <span style="float:left; width: 50%; height: 100px;">
+                                    <h3 style="margin-top: 0px;">Skådespelare</h3>
                                     <p>
                                         -
                                         %for actor in movieInfo['actors']:
@@ -40,8 +40,8 @@
                                         %end
                                     </p>
                                 </span>
-                                <span style="float:right;text-align:right; width: 50%;">
-                                    <h3>Producent</h3>
+                                <span style="float:right;text-align:right; width: 50%; height: 100px;">
+                                    <h3 style="margin-top: 0px;">Regissör</h3>
                                     <p>
                                         -
                                         %for director in movieInfo['directors']:

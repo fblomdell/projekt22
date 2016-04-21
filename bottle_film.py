@@ -34,7 +34,7 @@ def cinema():
 Fixa upplösning för poster
 '''
 def upgrade_poster(imageURL):
-    newURL = imageURL.replace("75", "500", 1)
+    newURL = imageURL.replace("_WIDTH_", "900", 1)
     return newURL
 
 
@@ -42,7 +42,7 @@ def upgrade_poster(imageURL):
 def new_movie_window():
     movieId = request.forms.get('movieid')
     movieDetails = getMovieDetails(movieId)
-    newPoster = upgrade_poster(movieDetails['mediumPoster'])
+    newPoster = upgrade_poster(movieDetails['placeHolderPosterURL'])
     return template('movie', url=url, movieInfo=movieDetails, image=newPoster)
 
 run(host="localhost", port=8080, debug=True)
