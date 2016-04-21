@@ -18,7 +18,6 @@ def server_static(path):
 
 @route("/movies", method="post")
 def cinema():
-    
     allCities = getCities()
     cityID = request.forms.get('city')
     cinemaList = getCinemas(cityID)
@@ -29,7 +28,6 @@ def cinema():
         return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID)
     else:
         movieList = getCinemaMovies(cityID, chosenCinemaID)
-        print len(movieList['shows'])
         return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID, movieList=movieList)
 
 '''

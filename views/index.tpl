@@ -79,19 +79,29 @@
                     %except NameError:
                         <!--pass-->
                     %else:
+                        %movieIdList = []
+                        %movieTitleList = []
                         %for movie in movieList['shows']:
-                                <div class="col-sm-3">
-                                        <div class="thumbnail movie"data-toggle="modal" data-target="#modalLabel" id="{{!movie['movieId']}}" onclick="submitMoviePost({{!movie['movieId']}})">
+                                <!-- Sparar varje film i en lista och jämför med nästa film, sen nollställs listan och en ny film sparas och jämför med nästa, plockar bort duplikater -->
+                                %for checkMovie in movieIdList:
+                                    %if not movie['movieId'] == checkMovie:
+                                        <div class="col-sm-3">
+                                            <div class="thumbnail movie"data-toggle="modal" data-target="#modalLabel" id="{{!movie['movieId']}}" onclick="submitMoviePost({{!movie['movieId']}})">
 
-                                        <div class="hovereffect">
-                                            <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['movieId']}}.jpg" alt="{{!movie['title']}}">
-                                            <div class="overlay">
-                                                <h4>{{!movie['title']}}</h4>
+                                                <div class="hovereffect">
+                                                    <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['movieId']}}.jpg" alt="{{!movie['title']}}">
+                                                    <div class="overlay">
+                                                        <h4>{{!movie['title']}}</h4>
 
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    %end
+                                %end
+                                %movieIdList = []
+                                %movieIdList.append(movie['movieId'])
+                                
                         %end
                     %end
                 <div class="col-sm-3">
@@ -101,66 +111,6 @@
                     </form>
                 </div>
             </div>
-            <!-- En modal visas när användaren klickar på filmpostern -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modalLabel">
-                <div class="modal-dialog modal-lg modalPopup">
-                    <div class="modal-content" style="padding: 15px; padding-top: 0px; background-color: #101010; color: white;">
-                        <div class="row">
-                            <div class="col-lg-12" id="posterOverlay" style='background-image: url("http://www.telegraph.co.uk/content/dam/film/the%20revenant/leo-xlarge.jpg")'>
-                                <h1 id="posterTitle">The Revenant</h1>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
-                                    <video class="embed-responsive-item" controls>
-                                        <source src="http://aka-m-p.maxplatform.com/20/57/78/HD-720p_1280x720_FnjtoI_1_se_1_50063_80210_120589_1111.mp4?u=2_105462">
-                                    </video>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <h2>Drama, 13 år</h2>
-                                <span style="float:left; width: 50%;">
-                                    <h3>Skådespelare</h3>
-                                    <p>X, y, z</p>
-                                </span>
-                                <span style="float:right;text-align:right; width: 50%;">
-                                    <h3>Producent</h3>
-                                    <p>X, y, z</p>
-                                </span>
-                                <span style="clear:both;border-top: 1px solid #000;">
-                                <p>Under en expedition i den outforskade amerikanska vildmarken blir Hugh attackerad av en björn och lämnad att dö av de andra. I sin kamp att överleva får han utstå obeskrivlig sorg och att ha blivit bedragen av sin närmaste vän John Fitzgerald. Nu är han på jakt efter upprättelse i den bittra vintern och drivs bara av ren viljestyrka och kärlek till sin familj.\r\n \r\nRegi av Oscarbelönade Alejando G. Inarritu (Birdman, Babel).</p></span>
-                            </div>
-                            <div class="col-lg-12" style="border-top: 1px solid #999;">
-                                <div class="rows">
-                                    <h4>Filmstaden</h4>
-                                    <div class="col-xs-3 movieShowDetails">
-                                        <h3>21:00</h3>
-                                        <h4>3D, Textad</h4>
-                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
-                                    </div>
-                                    <div class="col-xs-3 movieShowDetails">
-                                        <h3>22:00</h3>
-                                        <h4>3D, Textad</h4>
-                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
-                                    </div>
-                                    <div class="col-xs-3 movieShowDetails">
-                                        <h3>23:00</h3>
-                                        <h4>3D</h4>
-                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
-                                    </div>
-                                    <div class="col-xs-3 movieShowDetails">
-                                        <h3>23:55</h3>
-                                        <h4>Textad</h4>
-                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-         
         </div>
         
         <!-- Latest compiled and minified JavaScript -->
