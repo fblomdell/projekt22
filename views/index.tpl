@@ -79,37 +79,26 @@
                     %except NameError:
                         <!--pass-->
                     %else:
-                        %movieIdList = []
-                        %movieTitleList = []
-                        %for movie in movieList['shows']:
-                                <!-- Sparar varje film i en lista och jämför med nästa film, sen nollställs listan och en ny film sparas och jämför med nästa, plockar bort duplikater -->
-                                %for checkMovie in movieIdList:
-                                    %if not movie['movieId'] == checkMovie:
-                                        <div class="col-sm-3">
-                                            <div class="thumbnail movie"data-toggle="modal" data-target="#modalLabel" id="{{!movie['movieId']}}" onclick="submitMoviePost({{!movie['movieId']}})">
+                        %for movie in movieList['movies']:
+                            %for movieID in sortedList:
+                                %if str(movieID) == str(movie['id']):
+                                    <div class="col-sm-3">
+                                        <div class="thumbnail movie"data-toggle="modal" data-target="#modalLabel" id="{{!movie['id']}}" onclick="submitMoviePost({{!movie['id']}})">
 
-                                                <div class="hovereffect">
-                                                    <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['movieId']}}.jpg" alt="{{!movie['title']}}">
-                                                    <div class="overlay">
-                                                        <h4>{{!movie['title']}}</h4>
+                                            <div class="hovereffect">
+                                                <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['id']}}.jpg" alt="{{!movie['movieName']}}">
+                                                <div class="overlay">
+                                                    <h4>{{!movie['movieName']}}</h4>
 
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    %end
-                                %end
-                                %movieIdList = []
-                                %movieIdList.append(movie['movieId'])
-                                
+                                        </div>
+                               %end
+                           %end     
                         %end
                     %end
-                <div class="col-sm-3">
-                    <form method="post" action="/movieInfo/" name="testForm2">
-                        <input type="hidden" value="Hello" name="movieid">
-                        <input type="submit" name="Click">
-                    </form>
-                </div>
+                
             </div>
         </div>
         
