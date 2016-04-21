@@ -86,16 +86,18 @@
                                 %for checkMovie in movieIdList:
                                     %if not movie['movieId'] == checkMovie:
                                         <div class="col-sm-3">
-                                            <div class="thumbnail movie"data-toggle="modal" data-target="#modalLabel" id="{{!movie['movieId']}}" onclick="submitMoviePost({{!movie['movieId']}})">
+                                            <a href="#" onclick="var a = {{movie['movieId']}}; sessionStorage.setItem(&quot;sent&quot;, a); window.open('redir', 'newwindow', 'width=1230, height=610'); return false;">
+                                                <div class="thumbnail movie" id="{{!movie['movieId']}}">
 
-                                                <div class="hovereffect">
-                                                    <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['movieId']}}.jpg" alt="{{!movie['title']}}">
-                                                    <div class="overlay">
-                                                        <h4>{{!movie['title']}}</h4>
+                                                    <div class="hovereffect">
+                                                        <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['movieId']}}.jpg" alt="{{!movie['title']}}">
+                                                        <div class="overlay">
+                                                            <h4>{{!movie['title']}}</h4>
 
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     %end
                                 %end
