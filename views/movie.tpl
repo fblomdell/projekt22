@@ -33,11 +33,21 @@
                                 <h2>{{movieInfo['genreName']}}, {{movieInfo['age']}}</h2>
                                 <span style="float:left; width: 50%;">
                                     <h3>Skådespelare</h3>
-                                    <p>X, y, z</p>
+                                    <p>
+                                        -
+                                        %for actor in movieInfo['actors']:
+                                            {{actor['name']}} -
+                                        %end
+                                    </p>
                                 </span>
                                 <span style="float:right;text-align:right; width: 50%;">
                                     <h3>Producent</h3>
-                                    <p>X, y, z</p>
+                                    <p>
+                                        -
+                                        %for director in movieInfo['directors']:
+                                            {{director['name']}} -
+                                        %end
+                                    </p>
                                 </span>
                                 <span style="clear:both;border-top: 1px solid #000;">
                                 <p>{{movieInfo['shortDescription']}}</p></span>

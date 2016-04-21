@@ -59,6 +59,7 @@ var obj = jQuery.parseJSON(text);
 function submitMoviePost(val){    
     var form = document.createElement("form");
     form.setAttribute("method", "post");
+    form.setAttribute("target", "_blank");
     form.setAttribute("action", '/movieInfo/');
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
