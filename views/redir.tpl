@@ -19,7 +19,7 @@
                 $(document).ready(function(){
     //This sessionStorage.getItem(); is also a predefined function in javascript
     //will retrieve session and get the value;
-                    var a = sessionStorage.getItem("sent");
+                    /*var a = sessionStorage.getItem("sent");
                     
                     var form = document.createElement("form");
                 form.setAttribute("method", "post");
@@ -32,7 +32,7 @@
 
                 document.body.appendChild(form);
                 form.submit();
-                });    
+                });    */
                 /*
                 var form = document.createElement("form");
                 form.setAttribute("method", "post");

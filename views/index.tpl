@@ -6,7 +6,7 @@
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="{{ url('static', path='popuptest.js') }}"></script>
-        
+        <script src="{{ url('static', path='geo.js') }}"></script>
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
@@ -86,7 +86,8 @@
                                 %for checkMovie in movieIdList:
                                     %if not movie['movieId'] == checkMovie:
                                         <div class="col-sm-3">
-                                            <a href="#" onclick="var a = {{movie['movieId']}}; sessionStorage.setItem(&quot;sent&quot;, a); window.open('redir', 'newwindow', 'width=1230, height=610'); return false;">
+                                           <form action="redir" method="post" onsubmit="target_popup(this)">
+                                               <input type="hidden" value="{{movie['movieId']}}" name="movieId">
                                                 <div class="thumbnail movie" id="{{!movie['movieId']}}">
 
                                                     <div class="hovereffect">
@@ -97,7 +98,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </a>
+                                            </form>
                                         </div>
                                     %end
                                 %end
