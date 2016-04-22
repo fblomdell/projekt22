@@ -30,9 +30,9 @@
                                 %for city in allCities['cities']:
                                     <option value="{{city['id']}}">{{city['name']}}</option>
                                 %end
-                            %else: 
+                            %else:
+                                <!-- Listar alla städer som finns och sätter select på den stad som användaren väljer -->
                                 %for city in allCities['cities']:
-
                                     %if cityID == city['id']:
                                         <option value="{{city['id']}}" selected>{{city['name']}}</option>
 
@@ -51,6 +51,7 @@
                             %except NameError:
                                 pass
                             %else:
+                                <!-- Listar alla biografer som finns i den vada staden och sätter select på den biograf som användaren väljer -->
                                 %for cinema in cinemaList['theatres']:
                                     %if str(chosenCinemaID) == str(cinema['id']):
                                         <option value="{{cinema['id']}}" selected>{{cinema['name']}}</option>
@@ -79,6 +80,7 @@
                     %except NameError:
                         <!--pass-->
                     %else:
+                        <!-- Presenterar de filmer som går på den valda biografen -->
                         %for movie in movieList['movies']:
                             %for movieID in sortedList:
                                 %if str(movieID) == str(movie['id']):
