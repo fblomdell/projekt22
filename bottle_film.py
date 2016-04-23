@@ -70,7 +70,7 @@ def upgrade_poster(imageURL):
 
 @route('/redir')
 def redir():
-    return template('redir')
+    return "You shouldn't see this"
 
 @route("/movieInfo/", method="post")
 def new_movie_window():
