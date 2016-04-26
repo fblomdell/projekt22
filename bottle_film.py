@@ -81,4 +81,4 @@ def new_movie_window():
 
 
 
-run(host="localhost", port=8080, debug=True)
+run(host="localhost", port=5000, debug=True)
