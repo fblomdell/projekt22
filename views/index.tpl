@@ -88,7 +88,9 @@
                             %for movieID in sortedList:
                                 %if str(movieID) == str(movie['id']):
                                     <div class="col-sm-3">
+                                        <!-- Skapa en sträng av JSON, formattera den och för varje poster onclick ska denna JSON läsas av -->
                                         %movieText = json.dumps(movie)
+                                        %movieText = movieText.replace("'", "\u0027")
                                             <div class="thumbnail movie" id="{{!movie['id']}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
 
                                                 <div class="hovereffect">
@@ -103,10 +105,11 @@
                            %end     
                         %end
                     %end
-                                        
+                    
+                    <!-- Här börjar popup-fönstret -->
                     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
+                        <div class="modal-dialog modal-lg" id="movieInfoModal">
+                            <div class="modal-content" style="background-color: black; color: white; box-shadow: 0 0px 50px rgba(255, 0, 0, 0.5)">
                                 <div class="row">
                 <div class="col-lg-12" id="posterOverlay" style="">
                 </div>
@@ -115,7 +118,7 @@
                         <div class="row">
                             <div class="col-lg-5">
                                 <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
-                                    <video class="embed-responsive-item" controls>
+                                    <video class="embed-responsive-item" controls poster="https://sites.psu.edu/connorzimmerman/wp-content/uploads/sites/4939/2014/01/movie-reel.png">
                                         <source src="">
                                     </video>
                                 </div>

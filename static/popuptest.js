@@ -1,5 +1,5 @@
 //vald biograf
-
+//Test JSON
 var text = '{ "shows": [{' +
 	'"auditoriumName": "Storgatan salong 2",' +
 	'"auditoriumsys99Code": "2",' +
@@ -57,6 +57,7 @@ var text = '{ "shows": [{' +
 var obj = jQuery.parseJSON(text);
 var a;
 
+//Defunct
 function submitMoviePost(val){    
     var form = document.createElement("form");
     form.setAttribute("method", "post");
@@ -73,6 +74,7 @@ function submitMoviePost(val){
     form.submit();
 }
 
+//Defunct
 function loadPopup(movieId){    
     var form = document.createElement("form");
     form.setAttribute("method", "post");
@@ -86,12 +88,15 @@ function loadPopup(movieId){
     document.body.appendChild(form);
     form.submit();
 }
+//Defunct
 function target_popup(form) {
     window.open('redir', 'formpopup', 'width=400,height=400,resizeable,scrollbars');
     form.target = 'formpopup';
     alert("Done");
 }
 
+//Uppdatera popup-fönstret med information från filmen användaren klickar på
+//Input: JSON-fil om filmen (ev visningar)
 function populateModal(movie){
     $('#posterTitle').text(movie['movieName']);
     $('#genreAge').text(movie['genreName'] + ", " + movie['age']);
@@ -107,7 +112,7 @@ function populateModal(movie){
     }
     $('#actors').text(actorList);
     $('#desc').text(movie['shortDescription']);
-    $("#directors").text(movie['directors'][0]['name']);
+    $('#directors').text(movie['directors'][0]['name']);
     $('#posterOverlay').css('background-image', 'url(' + upgradePoster(movie['placeHolderPosterURL']) + ')');
 }
 
