@@ -129,14 +129,13 @@ function upgradePoster(placeholderBanner){
 
 
 
-
-
-
 $(document).ready(function(){
     $('body').on('hidden.bs.modal', '.modal', function () {
         $('video').trigger('pause');
     });
-    $('[data-toggle="tooltip"]').tooltip()
+    
+    $('[data-toggle="tooltip"]').tooltip();
+    
     //for(var i = 0; i < obj.shows.length; i++){
     //    updateModalTime(i);
     //}

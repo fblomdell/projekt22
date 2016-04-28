@@ -2122,7 +2122,7 @@ pre code {
     .col-sm-3 {
         width: 16%;
         margin-bottom: 10px;
-        
+        vertical-align: top;
     }
 
     .col-sm-2 {
@@ -5404,9 +5404,9 @@ a.badge:focus,a.badge:hover {
     padding: 0px;
     line-height: 1.42857143;
     background-color: #000;
-    height: 380px;
+    height: 290px;
     width: 200px;
-    border-bottom: solid 1px #fff;
+    
     color: white;
     
 }

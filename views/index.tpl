@@ -75,8 +75,7 @@
             <h2>BIOGRAF</h2>
             <hr>
             <!-- Denna div visar en rad med thumbnails. 4 videos kan få plats på en rad (går att ändra enkelt) -->
-            <div class="row">
-                
+                <div class="row">
                     %try:
                         <!--{{!sortedList}}-->
                     %except NameError:
@@ -84,15 +83,32 @@
                     %else:
                         %for movieID, movie in sortedList.items():
                             
-                            
-                            <div class="col-sm-3">
+                        
+                            <div class="col-sm-3" style="border-bottom: solid 1px #fff;">
                                <form action="redir" method="post" onsubmit="target_popup(this)">
                                    <input type="hidden" value="{{movie}}" name="movieID">
                                     <div class="thumbnail movie" id="{{!movieID}}">
                                         
-                                        <image src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}">
-
+                                        <image src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
+                                        
                                     </div>
+                                   <div class="showBox">
+                                        %for show in movie['shows']:
+                                            
+                                            <p>{{show['time']}} - 
+                                                %for tag in show['tags']:
+                                                    %if tag:
+                                                        %if tag['tagName'] == "3D":
+                                                        <abbr title="3D">
+                                                        <span class="glyphicon glyphicon-sunglasses" title="3D"></span></abbr>
+                                                        %elif tag['tagName'] == "sv":
+                                                        SV tal
+                                                        %end
+                                                    %end
+                                                %end
+                                                {{show['numberOfAvailableSeats']}} <button style="float: right; color: black;">Boka</button></p>
+                                        %end
+                                        </div>
                                 </form>
                             
                            
@@ -163,10 +179,10 @@
                         </div>
                             </div>
                         </div>
+                        </div>
 </div>
-            </div>
-                               
-        </div>
+        </div>                  
+        
         
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

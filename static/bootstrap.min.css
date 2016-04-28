@@ -1387,6 +1387,7 @@ figure {
 
 img {
     vertical-align: middle;
+    display: block;
 }
 
 .carousel-inner>.item>a>img,.carousel-inner>.item>img,.img-responsive,.thumbnail a>img,.thumbnail>img {
