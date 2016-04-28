@@ -2120,7 +2120,9 @@ pre code {
     }
 
     .col-sm-3 {
-        width: 14%;
+        width: 16%;
+        margin-bottom: 10px;
+        
     }
 
     .col-sm-2 {
@@ -5425,16 +5427,21 @@ a.badge:focus,a.badge:hover {
     padding: 0px;
     line-height: 1.42857143;
     background-color: #000;
+    height: 380px;
+    width: 200px;
+    border-bottom: solid 1px #fff;
+    color: white;
     
 }
 
 .thumbnail a>img,.thumbnail>img {
-    width: 180px;
-    height: 250px;
+    width: 240px;
+    height: 290px;
     margin-right: auto;
     margin-left: auto;
         position: absolute;
     top: 0;
+    padding: 10px;
 }
 
 a.thumbnail.active,a.thumbnail:focus,a.thumbnail:hover {

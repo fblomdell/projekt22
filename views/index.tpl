@@ -6,7 +6,7 @@
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="{{ url('static', path='popuptest.js') }}"></script>
-        <script src="{{ url('static', path='geo.js') }}"></script>
+        
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
@@ -87,14 +87,17 @@
                                     <div class="col-sm-3" onclick="loadPopup({{movie['id']}})">
                                             <div class="thumbnail movie" id="{{!movie['id']}}">
 
-                                                <div class="hovereffect">
-                                                    <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['id']}}.jpg" alt="{{!movie['movieName']}}">
+                                                
+                                                    <img class="poster" src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{!movie['id']}}.jpg" alt="{{!movie['movieName']}}">
                                                     <div class="overlay">
-                                                        <h4>{{!movie['movieName']}}</h4>
+                                                        
+                                                        
                                                     </div>
+                                                          
                                                 </div>
+                                          
                                             </div>
-                                    </div>
+                                    
                                 %end
                            %end     
                         %end
