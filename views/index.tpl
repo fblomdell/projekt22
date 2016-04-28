@@ -89,22 +89,17 @@
                                <form action="redir" method="post" onsubmit="target_popup(this)">
                                    <input type="hidden" value="{{movie}}" name="movieID">
                                     <div class="thumbnail movie" id="{{!movieID}}">
-
-
-                                            <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}">
-                                            <div class="overlay">
-                                                <h4>{{!movie['movieName']}}</h4>
-                                            </div>
-
-                                        </div>
+                                        
+                                        <image src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}">
 
                                     </div>
                                 </form>
-                            </div>
+                            
                            
-                
+                            </div>
                         %end
                     %end
+            </div>
                     
                     <!-- Här börjar popup-fönstret -->
                     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
