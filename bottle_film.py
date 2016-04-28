@@ -3,6 +3,7 @@
 from bottle import Bottle, run, route, template, url, view, static_file, request, response
 from SfApi import getCities, getCinemas, getCinemaMovies, getMovieDetails, getMovies
 import json
+import datetime, time
 
 @route("/")
 #@view("index")
@@ -25,42 +26,85 @@ def cinema():
     movieList = getMovies(cityID)
     
     chosenCinemaID = request.forms.get('cinema')
-
+    
     if chosenCinemaID == None:
         return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID)
     else:
         showList = getCinemaMovies(cityID, chosenCinemaID)           
         
         sortedList = sortFunc(movieList, showList)
-        '''
-        for movie in movieList['movies']:
-            for movieID in sortedList:
-                if movieID[0] == movie['id']:
-                    print 'tjehoooo'
-        '''                       
-        return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID, movieList=movieList, sortedList=sortedList)
+
+    todaysDate = time.strftime('%Y%m%d')
+    return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID, sortedList=sortedList, date=todaysDate)
 
 
 def sortFunc(movieList, showList):
-    sortedList = []
+
+    movieDict = {}
+    moviesToday = {}
+    idList = {}
+    '''
+    #create placeholder for movieinfo in moviesToday
     for movie in movieList['movies']:
-        #print movie['id']
-        for show in showList['shows']:
-            #print show['movieId']
-            if str(movie['id']) == str(show['movieId']):
-                sortedList.append(movie['id'])
-                #tel['guido'] = 4127
+        moviesToday[movie['id']] = []
+    '''
+    
+    #add movieInfo from allmovies based on city
+    for movie in movieList['movies']:
+        idList[movie['id']] = [movie['id']]
 
-                
-        if movie['movieVersions'] != None:
-            for version in movie['movieVersions']:
-                for show in showList['shows']:
-                    if str(version) == str(show['movieId']):
-                        sortedList.append(movie['id'])
+        movieDict['id'] = movie['id']
+        movieDict['parentId'] = movie['parentId']
+        movieDict['movieName'] = movie['movieName']
+        movieDict['genreName'] = movie['genreName']
+        movieDict['formattedLength'] = movie['formattedLength']
+        movieDict['shortDescription'] = movie['shortDescription']
+        movieDict['age'] = movie['age']
+        movieDict['mediumPoster'] = movie['mediumPoster']
+        movieDict['actors'] = movie['actors']
+        movieDict['directors'] = movie['directors']
+        movieDict['shows'] = []
 
+        moviesToday[movie['id']] = dict(movieDict)
+        
+        if len(movie['movieVersions']) != 0:
+            for movieID in movie['movieVersions']:
+                idList[movie['id']].append(movieID)
 
-    sortedList = list(set(sortedList))
-    return sortedList
+    oneShow={}
+    
+    #idList contains all version IDs based on shows today.
+    for show in showList['shows']:
+        for key, value in idList.iteritems():
+            for movieID in value:
+                    
+                if str(movieID) == str(show['movieId']):
+                    
+                    oneShow['time'] = show['time']
+                    oneShow['numberOfAvailableSeats'] = show['numberOfAvailableSeats']
+                    oneShow['auditoriumsys99Code'] = show['auditoriumsys99Code']
+                    oneShow['tags'] = show['tags']
+                    oneShow['title'] = show['title']
+                    oneShow['movieId'] = show['movieId']
+                    
+                    for key1, value1 in moviesToday.items():
+                        if str(key1) == str(key):
+                            #for showKey in value1:
+                            value1['shows'].append(dict(oneShow))
+                            
+
+    #remove movies that has no show today
+    for key, value in moviesToday.items():
+        if not value['shows']:
+            del moviesToday[key]
+    '''
+    for k, v in moviesToday.iteritems():
+        print k, v['movieName']
+    '''
+    
+    return moviesToday
+
+ 
 '''
 Fixa upplösning för poster
 '''
@@ -68,9 +112,6 @@ def upgrade_poster(imageURL):
     newURL = imageURL.replace("_WIDTH_", "900", 1)
     return newURL
 
-@route('/redir')
-def redir():
-    return "You shouldn't see this"
 
 @route("/movieInfo/", method="post")
 def new_movie_window():

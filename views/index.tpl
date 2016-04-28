@@ -68,6 +68,8 @@
     </header>
     <body>
         
+        <!-- Behövs för att skicka filminfo till popup (måste finnas ett bättre sätt) -->
+        
         <div class="container">
             
             <h2>BIOGRAF</h2>
@@ -76,32 +78,97 @@
             <div class="row">
                 
                     %try:
-                        <!--{{!movieList}}-->
+                        <!--{{!sortedList}}-->
                     %except NameError:
                         <!--pass-->
                     %else:
-                        <!-- Presenterar de filmer som går på den valda biografen -->
-                        %for movie in movieList['movies']:
-                            %for movieID in sortedList:
-                                %if str(movieID) == str(movie['id']):
-                                    <div class="col-sm-3" onclick="loadPopup({{movie['id']}})">
-                                            <div class="thumbnail movie" id="{{!movie['id']}}">
+                        %for movieID, movie in sortedList.items():
+                            
+                            
+                            <div class="col-sm-3">
+                               <form action="redir" method="post" onsubmit="target_popup(this)">
+                                   <input type="hidden" value="{{movie}}" name="movieID">
+                                    <div class="thumbnail movie" id="{{!movieID}}">
 
-                                                
-                                                    <img class="poster" src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{!movie['id']}}.jpg" alt="{{!movie['movieName']}}">
-                                                    <div class="overlay">
-                                                        
-                                                        
-                                                    </div>
-                                                          
-                                                </div>
-                                          
+
+                                            <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}">
+                                            <div class="overlay">
+                                                <h4>{{!movie['movieName']}}</h4>
                                             </div>
-                                    
-                                %end
-                           %end     
+
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                           
+                
                         %end
                     %end
+                    
+                    <!-- Här börjar popup-fönstret -->
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg" id="movieInfoModal">
+                            <div class="modal-content" style="background-color: black; color: white; box-shadow: 0 0px 50px rgba(255, 0, 0, 0.5)">
+                                <div class="row">
+                <div class="col-lg-12" id="posterOverlay" style="">
+                </div>
+                <h1 id="posterTitle">Titel</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
+                                    <video class="embed-responsive-item" controls poster="https://sites.psu.edu/connorzimmerman/wp-content/uploads/sites/4939/2014/01/movie-reel.png">
+                                        <source src="">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <h2 id="genreAge">Genre, ålder</h2>
+                                <span style="float:left; width: 50%; height: 100px; overflow-y: scroll;">
+                                    <h3 style="margin-top: 0px;">Skådespelare</h3>
+                                    <p id="actors">
+                                        Actors
+                                    </p>
+                                </span>
+                                <span style="float:right;text-align:right; width: 50%; height: 100px;">
+                                    <h3 style="margin-top: 0px;">Regissör</h3>
+                                    <p id="directors">
+                                        Regissör
+                                    </p>
+                                </span>
+                                <span style="clear:both;border-top: 1px solid #000;">
+                                <p id="desc"></p></span>
+                            </div>
+                            <div class="col-lg-12" style="border-top: 1px solid #999;">
+                                <div class="rows">
+                                    <h4>Filmstaden</h4>
+                                    <div class="col-xs-3 movieShowDetails">
+                                        <h3>21:00</h3>
+                                        <h4>3D, Textad</h4>
+                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
+                                    </div>
+                                    <div class="col-xs-3 movieShowDetails">
+                                        <h3>22:00</h3>
+                                        <h4>3D, Textad</h4>
+                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
+                                    </div>
+                                    <div class="col-xs-3 movieShowDetails">
+                                        <h3>23:00</h3>
+                                        <h4>3D</h4>
+                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
+                                    </div>
+                                    <div class="col-xs-3 movieShowDetails">
+                                        <h3>23:55</h3>
+                                        <h4>Textad</h4>
+                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+</div>
             </div>
                                
         </div>

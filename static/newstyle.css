@@ -172,6 +172,9 @@ filter:alpha(opacity=100);
 transform:translatey(0);
 }
 
+#movieInfoModal{
+    width:80%;
+}
 #posterOverlay{
     background-size: cover;
     background-repeat: no-repeat;
