@@ -101,7 +101,7 @@ def sortFunc(movieList, showList):
         print k, v['movieName']
     '''
     
-    #return moviesToday
+    return moviesToday
 
  
 '''
@@ -111,9 +111,6 @@ def upgrade_poster(imageURL):
     newURL = imageURL.replace("_WIDTH_", "900", 1)
     return newURL
 
-@route('/redir')
-def redir():
-    return template('redir')
 
 @route("/movieInfo/", method="post")
 def new_movie_window():

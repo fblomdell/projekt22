@@ -31,7 +31,7 @@
                             </div>
                             <div class="col-lg-7">
                                 <h2>{{movieInfo['genreName']}}, {{movieInfo['age']}}</h2>
-                                <span style="float:left; width: 50%; height: 100px;">
+                                <span style="float:left; width: 50%; height: 100px; overflow-y: scroll;">
                                     <h3 style="margin-top: 0px;">Skådespelare</h3>
                                     <p>
                                         -
