@@ -3,6 +3,7 @@
 from bottle import Bottle, run, route, template, url, view, static_file, request, response
 from SfApi import getCities, getCinemas, getCinemaMovies, getMovieDetails, getMovies
 import json
+import datetime, time
 
 @route("/")
 #@view("index")
@@ -25,7 +26,7 @@ def cinema():
     movieList = getMovies(cityID)
     
     chosenCinemaID = request.forms.get('cinema')
-
+    
     if chosenCinemaID == None:
         return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID)
     else:
@@ -33,8 +34,8 @@ def cinema():
         
         sortedList = sortFunc(movieList, showList)
 
-                      
-        return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID, sortedList=sortedList)
+    todaysDate = time.strftime('%Y%m%d')
+    return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID, sortedList=sortedList, date=todaysDate)
 
 
 def sortFunc(movieList, showList):
