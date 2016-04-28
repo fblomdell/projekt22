@@ -72,17 +72,80 @@ def getTicketsOfMovie(cityId, movieId, date):
     #OBS OBS OBS!!!!!! uncomment to get price information:
     #detailUrl = movieTicket['shows'][0]['showDetailURL']
     #getTicketInformation(detailUrl)
-'''    
-def getTicketInformation(detailUrl):
 
-    return makeCall(detailUrl)
-'''
-#getCinemaMovies('109')
-#auth()
-'''
-    cityID = request.forms.get('city')
-    #cinemas = getCinemas(cityID)
-    print cityID
-    return template('index', url=url, getCities=getCities)#, cinemas=cinemas)
-'''
+
+#kod för sortering:
+def sortLists():
+    showList = getCinemaMovies('MA', '109')
+    movieList = getMovies('MA')
+    
+    movieDict = {}
+    moviesToday = {}
+    idList = {}
+    '''
+    #create placeholder for movieinfo in moviesToday
+    for movie in movieList['movies']:
+        moviesToday[movie['id']] = []
+    '''
+    
+    #add movieInfo from allmovies based on city
+    for movie in movieList['movies']:
+        idList[movie['id']] = [movie['id']]
+
+        movieDict['id'] = movie['id']
+        movieDict['parentId'] = movie['parentId']
+        movieDict['movieName'] = movie['movieName']
+        movieDict['genreName'] = movie['genreName']
+        movieDict['formattedLength'] = movie['formattedLength']
+        movieDict['shortDescription'] = movie['shortDescription']
+        movieDict['age'] = movie['age']
+        movieDict['mediumPoster'] = movie['mediumPoster']
+        movieDict['actors'] = movie['actors']
+        movieDict['directors'] = movie['directors']
+        movieDict['shows'] = []
+
+        moviesToday[movie['id']] = dict(movieDict)
+        
+        if len(movie['movieVersions']) != 0:
+            for movieID in movie['movieVersions']:
+                idList[movie['id']].append(movieID)
+
+    oneShow={}
+    
+    #idList contains all version IDs based on shows today.
+    for show in showList['shows']:
+        for key, value in idList.iteritems():
+            for movieID in value:
+                    
+                if str(movieID) == str(show['movieId']):
+                    
+                    oneShow['time'] = show['time']
+                    oneShow['numberOfAvailableSeats'] = show['numberOfAvailableSeats']
+                    oneShow['auditoriumsys99Code'] = show['auditoriumsys99Code']
+                    oneShow['tags'] = show['tags']
+                    oneShow['title'] = show['title']
+                    oneShow['movieId'] = show['movieId']
+                    
+                    for key1, value1 in moviesToday.items():
+                        if str(key1) == str(key):
+                            #for showKey in value1:
+                            value1['shows'].append(dict(oneShow))
+                            
+
+    #remove movies that has no show today
+    for key, value in moviesToday.items():
+        if not value['shows']:
+            del moviesToday[key]
+
+    #sorted(moviesToday, key=lambda x : (moviesToday[x]['shows']['time']))
+    '''
+    for k, v in moviesToday.iteritems():
+        print k, v['shows']
+    '''
+    
+    return moviesToday
+    
+
+
+
 

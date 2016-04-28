@@ -75,29 +75,29 @@
             <div class="row">
                 
                     %try:
-                        <!--{{!movieList}}-->
+                        <!--{{!sortedList}}-->
                     %except NameError:
                         <!--pass-->
                     %else:
-                        %for movie in movieList['movies']:
-                            %for movieID in sortedList:
-                                %if str(movieID) == str(movie['id']):
-                                    <div class="col-sm-3">
-                                       <form action="redir" method="post" onsubmit="target_popup(this)">
-                                           <input type="hidden" value="{{movie['id']}}" name="movieId">
-                                            <div class="thumbnail movie" id="{{!movie['id']}}">
+                        %for movieID, movie in sortedList.items():
+                            
+                            
+                            <div class="col-sm-3">
+                               <form action="redir" method="post" onsubmit="target_popup(this)">
+                                   <input type="hidden" value="{{movie}}" name="movieID">
+                                    <div class="thumbnail movie" id="{{!movieID}}">
 
-                                                <div class="hovereffect">
-                                                    <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{!movie['id']}}.jpg" alt="{{!movie['movieName']}}">
-                                                    <div class="overlay">
-                                                        <h4>{{!movie['movieName']}}</h4>
-                                                    </div>
-                                                </div>
+                                        <div class="hovereffect">
+                                            <image src="https://mobilebackend.sfbio.se/image/POSTER/150/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}">
+                                            <div class="overlay">
+                                                <h4>{{!movie['movieName']}}</h4>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                %end
-                           %end     
+                                </form>
+                            </div>
+                            
+                               
                         %end
                     %end
             </div>
