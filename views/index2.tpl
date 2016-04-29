@@ -6,10 +6,9 @@
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="{{ url('static', path='popuptest.js') }}"></script>
-        
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap.min.css') }}">
-        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
         
         <title>FilmDags</title>
@@ -75,22 +74,21 @@
             <h2>BIOGRAF</h2>
             <hr>
             <!-- Denna div visar en rad med thumbnails. 4 videos kan få plats på en rad (går att ändra enkelt) -->
-                    %try:
-                        <!--{{!sortedList}}-->
-                    %except NameError:
-                        <!--pass-->
-                    %else:
-                        %movieIndex = 0
-                        %for movieID, movie in sortedList.items():
-                            %if movieIndex % 6 == 0:
-                        <div class="row rowdiv">
-                            <div class="col-sm-2 tablecelldiv">
+            
+            %try:
+                <!--{{!sortedList}}-->
+            %except NameError:
+                <!--pass-->
+            %else:
+                %movieIndex = 0
+                %for movieID, movie in sortedList.items():
+                    %if movieIndex % 7 == 0:
+                        <div class="row">
+                            <div class="col-sm-2" style="border-bottom: solid 1px #fff;">
                                     <div class="thumbnail movie" id="{{!movieID}}">
                                         
                                         <image src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
-                                        
-                                    </div>
-                                <div class="showBox">
+                                        <div class="showBox">
                                         %for show in movie['shows']:
                                             
                                             <p>{{show['time']}} - 
@@ -110,15 +108,14 @@
                                                 <button style="float: right; color: black;">Boka</button></p>
                                         %end
                                         </div>
+                                    </div>
                             </div>
-                    %elif movieIndex % 6 != 5:
-                        <div class="col-sm-2 tablecelldiv">
+                    %elif movieIndex % 7 != 6:
+                        <div class="col-sm-2" style="border-bottom: solid 1px #fff;">
                                     <div class="thumbnail movie" id="{{!movieID}}">
                                         
                                         <image src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
-                                        
-                                    </div>
-                                <div class="showBox">
+                                        <div class="showBox">
                                         %for show in movie['shows']:
                                             
                                             <p>{{show['time']}} - 
@@ -138,15 +135,14 @@
                                                 <button style="float: right; color: black;">Boka</button></p>
                                         %end
                                         </div>
+                                    </div>
                             </div>
                     %else:
-                            <div class="col-sm-2 tablecelldiv">
+                            <div class="col-sm-2" style="border-bottom: solid 1px #fff;">
                                     <div class="thumbnail movie" id="{{!movieID}}">
                                         
                                         <image src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
-                                        
-                                    </div>
-                                <div class="showBox">
+                                        <div class="showBox">
                                         %for show in movie['shows']:
                                             
                                             <p>{{show['time']}} - 
@@ -166,13 +162,45 @@
                                                 <button style="float: right; color: black;">Boka</button></p>
                                         %end
                                         </div>
+                                    </div>
                             </div>
                         </div>
                     %end
                     %movieIndex = movieIndex + 1
-                            
-                        %end
-                    %end
+                %end
+            %end
+            %end
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
                     
                     <!-- Här börjar popup-fönstret -->
                     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
