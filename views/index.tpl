@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
+        <link rel="stylesheet" href="{{ url('static', path='whhg.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
         
         <title>FilmDags</title>
@@ -74,6 +75,7 @@
             <h2>BIOGRAF</h2>
             <hr>
             <!-- Denna div visar en rad med thumbnails. 4 videos kan få plats på en rad (går att ändra enkelt) -->
+                    %import json
                     %try:
                         <!--{{!sortedList}}-->
                     %except NameError:
@@ -85,20 +87,22 @@
                             %if movieIndex == len(sortedList.items()):
                                 </div>
                             %end
-        
+                            %movieText = json.dumps(movie)
+                            %movieText = movieText.replace("'", "\u0027")
+                            
                             %if movieIndex % 6 == 0:
                         <div class="row rowdiv">
                             <div class="col-sm-2 tablecelldiv">
-                                    <div class="thumbnail movie" id="{{!movieID}}">
+                                    <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
                                         
-                                        <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
+                                        <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}">
                                         
                                     </div>
                                 <div class="showBox">
                                         %for show in movie['shows']:
                                             
-                                            <p>{{show['time']}} - 
-                                                {{show['numberOfAvailableSeats']}}
+                                            <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
+                                                {{show['numberOfAvailableSeats']}}</abbr>
                                                 %for tag in show['tags']:
                                                     %if tag:
                                                         %if tag['tagName'] == "3D":
@@ -118,7 +122,7 @@
                             </div>
                     %elif movieIndex % 6 != 5:
                         <div class="col-sm-2 tablecelldiv">
-                                    <div class="thumbnail movie" id="{{!movieID}}">
+                                    <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
                                         
                                         <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
                                         
@@ -126,8 +130,8 @@
                                 <div class="showBox">
                                         %for show in movie['shows']:
                                             
-                                            <p>{{show['time']}} - 
-                                                {{show['numberOfAvailableSeats']}}
+                                            <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
+                                                {{show['numberOfAvailableSeats']}}</abbr>
                                                 %for tag in show['tags']:
                                                     %if tag:
                                                         %if tag['tagName'] == "3D":
@@ -147,7 +151,7 @@
                             </div>
                     %else:
                             <div class="col-sm-2 tablecelldiv">
-                                    <div class="thumbnail movie" id="{{!movieID}}">
+                                    <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
                                         
                                         <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
                                         
@@ -155,8 +159,8 @@
                                 <div class="showBox">
                                         %for show in movie['shows']:
                                             
-                                            <p>{{show['time']}} - 
-                                                {{show['numberOfAvailableSeats']}}
+                                            <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
+                                                {{show['numberOfAvailableSeats']}}</abbr>
                                                 %for tag in show['tags']:
                                                     %if tag:
                                                         %if tag['tagName'] == "3D":
