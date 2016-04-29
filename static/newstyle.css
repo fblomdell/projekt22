@@ -10,12 +10,6 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) { ... }
 
-.movie{
-    width: 180px;
-    height: 240px;
-    text-align: center;
-}
-
 header > h1 {
     display: inline-block;
     color: #fff;
@@ -28,14 +22,6 @@ hr {
 }
 header > img {
     
-}
-.movie h4{
-    margin-bottom: 3px;
-    color: #fff;
-    font-size: 18px;
-    font-size: 1vw;
-    overflow: hidden;
-
 }
 .hovereffect img:hover{
     cursor: pointer;
@@ -211,9 +197,12 @@ box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,1);
     display: table;
     border-bottom: 1px solid white; 
     width: 90%;
+    margin-bottom: 15px;
 }
 .tablecelldiv{
     display: table-cell;
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 .showBox{
@@ -225,10 +214,9 @@ box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,1);
     margin-left: auto;
     margin-right: auto;*/
     color: white;
-    width: 200px;
     line-height: 10px;
-    padding-left: 11px;
-    padding-right: 23px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .bookBtn{

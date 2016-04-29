@@ -6,10 +6,9 @@
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="{{ url('static', path='popuptest.js') }}"></script>
-        
-        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
         
         <title>FilmDags</title>
@@ -86,6 +85,7 @@
                             %if movieIndex == len(sortedList.items()):
                                 </div>
                             %end
+        
                             %if movieIndex % 6 == 0:
                         <div class="row rowdiv">
                             <div class="col-sm-2 tablecelldiv">
@@ -111,7 +111,8 @@
                                                         %end
                                                     %end
                                                 %end
-                                                <button style="float: right; color: black;">Boka</button></p>
+                                                %formattedTime = show['time'].replace(":", "")
+                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
                                         %end
                                         </div>
                             </div>
@@ -139,7 +140,8 @@
                                                         %end
                                                     %end
                                                 %end
-                                                <button style="float: right; color: black;">Boka</button></p>
+                                                %formattedTime = show['time'].replace(":", "")
+                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
                                         %end
                                         </div>
                             </div>
@@ -167,7 +169,8 @@
                                                         %end
                                                     %end
                                                 %end
-                                                <button style="float: right; color: black;">Boka</button></p>
+                                                %formattedTime = show['time'].replace(":", "")
+                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
                                         %end
                                         </div>
                             </div>
