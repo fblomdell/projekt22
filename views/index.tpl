@@ -8,7 +8,7 @@
 <script src="{{ url('static', path='popuptest.js') }}"></script>
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
-        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}?v=1.1">
         <link rel="stylesheet" href="{{ url('static', path='whhg.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
         
@@ -35,6 +35,7 @@
                                 %for city in allCities['cities']:
                                     %if cityID == city['id']:
                                         <option value="{{city['id']}}" selected>{{city['name']}}</option>
+                                        %chosenCity = city
 
                                     %else:
                                         <option value="{{city['id']}}">{{city['name']}}</option> 
@@ -55,6 +56,7 @@
                                 %for cinema in cinemaList['theatres']:
                                     %if str(chosenCinemaID) == str(cinema['id']):
                                         <option value="{{cinema['id']}}" selected>{{cinema['name']}}</option>
+                                        %chosenCinema = cinema
                                     %else:
                                         <option value="{{cinema['id']}}">{{cinema['name']}}</option>
                                     %end
@@ -71,8 +73,12 @@
         <!-- Behövs för att skicka filminfo till popup (måste finnas ett bättre sätt) -->
         
         <div class="container">
-            
-            <h2>BIOGRAF</h2>
+            %try:
+                <h2>{{chosenCity['name'].upper()}} > {{chosenCinema['name'].upper()}}</h2>
+                
+            %except NameError:
+                <h2>FILMDAGS</h2>
+            %end
             <hr>
             <!-- Denna div visar en rad med thumbnails. 4 videos kan få plats på en rad (går att ändra enkelt) -->
                     %import json
