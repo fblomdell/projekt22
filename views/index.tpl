@@ -25,7 +25,7 @@
                         <select class="form-control" onchange="this.form.submit()" name="city">
                             <option value="" disabled selected>Stad</option>
                             %try:
-                                {{!cityID}}
+                                <!--{{!cityID}}-->
                             %except NameError:
                                 %for city in allCities['cities']:
                                     <option value="{{city['id']}}">{{city['name']}}</option>
@@ -47,7 +47,7 @@
                         <select class="form-control" name="cinema" onchange="this.form.submit()">
                             <option disabled selected>Biograf</option>
                             %try:
-                                {{!cinemaList}}
+                                <!--{{!cinemaList}}-->
                             %except NameError:
                                 pass
                             %else:
@@ -82,12 +82,16 @@
                     %else:
                         %movieIndex = 0
                         %for movieID, movie in sortedList.items():
+                            %print len(sortedList.items())
+                            %if movieIndex == len(sortedList.items()):
+                                </div>
+                            %end
                             %if movieIndex % 6 == 0:
                         <div class="row rowdiv">
                             <div class="col-sm-2 tablecelldiv">
                                     <div class="thumbnail movie" id="{{!movieID}}">
                                         
-                                        <image src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
+                                        <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
                                         
                                     </div>
                                 <div class="showBox">
@@ -115,7 +119,7 @@
                         <div class="col-sm-2 tablecelldiv">
                                     <div class="thumbnail movie" id="{{!movieID}}">
                                         
-                                        <image src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
+                                        <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
                                         
                                     </div>
                                 <div class="showBox">
@@ -143,7 +147,7 @@
                             <div class="col-sm-2 tablecelldiv">
                                     <div class="thumbnail movie" id="{{!movieID}}">
                                         
-                                        <image src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
+                                        <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
                                         
                                     </div>
                                 <div class="showBox">
@@ -170,7 +174,8 @@
                         </div>
                     %end
                     %movieIndex = movieIndex + 1
-                            
+            
+                    %end
                         %end
                     %end
                     
