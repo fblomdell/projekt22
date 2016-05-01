@@ -95,97 +95,116 @@
                             %end
                             %movieText = json.dumps(movie)
                             %movieText = movieText.replace("'", "\u0027")
-                            
                             %if movieIndex % 6 == 0:
-                        <div class="row rowdiv">
-                            <div class="col-sm-2 tablecelldiv">
-                                    <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
-                                        
-                                        <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}">
-                                        
-                                    </div>
-                                <div class="showBox">
-                                        %for show in movie['shows']:
-                                            
-                                            <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
-                                                {{show['numberOfAvailableSeats']}}</abbr>
-                                                %for tag in show['tags']:
-                                                    %if tag:
-                                                        %if tag['tagName'] == "3D":
-                                                        <abbr title="3D">
-                                                        <span class="glyphicon glyphicon-sunglasses" title="3D"></span></abbr>
-                                                        %elif tag['tagName'] == "sv":
-                                                        <abbr title="Svensk tal">SV</abbr>
-                                                        %elif tag['tagName'] == "Subtitled":
-                                                        <span class="glyphicon glyphicon-text-background" title="Textad"></span>
+                                <!-- Start row -->
+                                <div class="row rowdiv">
+                                    <div class="col-sm-2 tablecelldiv">
+                                            <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
+
+                                                <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}">
+
+                                            </div>
+                                        <div class="showBox">
+                                                %for show in movie['shows']:
+
+                                                    <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
+                                                        {{show['numberOfAvailableSeats']}}</abbr>
+                                                        %for tag in show['tags']:
+                                                            %if tag:
+                                                                %if tag['tagName'] == "3D":
+                                                                <abbr title="3D">
+                                                                <span class="glyphicon glyphicon-sunglasses"></span></abbr>
+                                                                %elif tag['tagName'] == "sv":
+                                                                <abbr title="Svensk tal">SV</abbr>
+                                                                %elif tag['tagName'] == "Subtitled":
+                                                                <span class="glyphicon glyphicon-text-background" title="Textad"></span>
+                                                                %elif tag['tagName'] == "IMAX 3D":
+                                                                <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: aqua;"></span></abbr>
+                                                                %elif tag['tagName'] == "Dolby Atmos":
+                                                                <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
+                                                                %elif tag['tagName'] == "TrolleyShow":
+                                                                <abbr title="Barnvagnsbio"><i class="icon-stroller"></i></abbr>
+                                                                %end
+                                                            %end
                                                         %end
-                                                    %end
+                                                        %formattedTime = show['time'].replace(":", "")
+                                                        <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
                                                 %end
-                                                %formattedTime = show['time'].replace(":", "")
-                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
-                                        %end
-                                        </div>
-                            </div>
-                    %elif movieIndex % 6 != 5:
-                        <div class="col-sm-2 tablecelldiv">
-                                    <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
-                                        
-                                        <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
-                                        
+                                                </div>
                                     </div>
-                                <div class="showBox">
-                                        %for show in movie['shows']:
-                                            
-                                            <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
-                                                {{show['numberOfAvailableSeats']}}</abbr>
-                                                %for tag in show['tags']:
-                                                    %if tag:
-                                                        %if tag['tagName'] == "3D":
-                                                        <abbr title="3D">
-                                                        <span class="glyphicon glyphicon-sunglasses" title="3D"></span></abbr>
-                                                        %elif tag['tagName'] == "sv":
-                                                        <abbr title="Svensk tal">SV</abbr>
-                                                        %elif tag['tagName'] == "Subtitled":
-                                                        <span class="glyphicon glyphicon-text-background" title="Textad"></span>
-                                                        %end
+                                %elif movieIndex % 6 != 5:
+                                    <div class="col-sm-2 tablecelldiv">
+                                                <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
+
+                                                    <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
+
+                                                </div>
+                                            <div class="showBox">
+                                                    %for show in movie['shows']:
+
+                                                        <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
+                                                            {{show['numberOfAvailableSeats']}}</abbr>
+                                                            %for tag in show['tags']:
+                                                                %if tag:
+                                                                    %if tag['tagName'] == "3D":
+                                                                    <abbr title="3D">
+                                                                    <span class="glyphicon glyphicon-sunglasses"></span></abbr>
+                                                                    %elif tag['tagName'] == "sv":
+                                                                    <abbr title="Svensk tal">SV</abbr>
+                                                                    %elif tag['tagName'] == "Subtitled":
+                                                                    <span class="glyphicon glyphicon-text-background" title="Textad"></span>
+                                                                    %elif tag['tagName'] == "IMAX 3D":
+                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: aqua;"></span></abbr>
+                                                                    %elif tag['tagName'] == "Dolby Atmos":
+                                                                    <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
+                                                                    %elif tag['tagName'] == "TrolleyShow":
+                                                                    <abbr title="Barnvagnsbio"><i class="icon-stroller"></i></abbr>
+                                                                    %end
+                                                                %end
+                                                            %end
+                                                            %formattedTime = show['time'].replace(":", "")
+                                                            <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
                                                     %end
-                                                %end
-                                                %formattedTime = show['time'].replace(":", "")
-                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
-                                        %end
+                                                    </div>
                                         </div>
-                            </div>
-                    %else:
-                            <div class="col-sm-2 tablecelldiv">
-                                    <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
-                                        
-                                        <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
-                                        
+                                %else:
+                                        <div class="col-sm-2 tablecelldiv">
+                                                <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
+
+                                                    <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
+
+                                                </div>
+                                            <div class="showBox">
+                                                    %for show in movie['shows']:
+
+                                                        <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
+                                                            {{show['numberOfAvailableSeats']}}</abbr>
+                                                            %for tag in show['tags']:
+                                                                %if tag:
+                                                                    %if tag['tagName'] == "3D":
+                                                                    <abbr title="3D">
+                                                                    <span class="glyphicon glyphicon-sunglasses"></span></abbr>
+                                                                    %elif tag['tagName'] == "sv":
+                                                                    <abbr title="Svensk tal">SV</abbr>
+                                                                    %elif tag['tagName'] == "Subtitled":
+                                                                    <span class="glyphicon glyphicon-text-background" title="Textad"></span>
+                                                                    %elif tag['tagName'] == "IMAX 3D":
+                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: aqua;"></span></abbr>
+                                                                    %elif tag['tagName'] == "Dolby Atmos":
+                                                                    <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
+                                                                    %elif tag['tagName'] == "TrolleyShow":
+                                                                    <abbr title="Barnvagnsbio"><i class="icon-stroller"></i></abbr>
+                                                                    %end
+                                                                %end
+                                                            %end
+                                                            %formattedTime = show['time'].replace(":", "")
+                                                            <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
+                                                    %end
+                                                    </div>
+                                        </div>
+                                    <!-- End row -->
                                     </div>
-                                <div class="showBox">
-                                        %for show in movie['shows']:
-                                            
-                                            <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
-                                                {{show['numberOfAvailableSeats']}}</abbr>
-                                                %for tag in show['tags']:
-                                                    %if tag:
-                                                        %if tag['tagName'] == "3D":
-                                                        <abbr title="3D">
-                                                        <span class="glyphicon glyphicon-sunglasses" title="3D"></span></abbr>
-                                                        %elif tag['tagName'] == "sv":
-                                                        <abbr title="Svensk tal">SV</abbr>
-                                                        %elif tag['tagName'] == "Subtitled":
-                                                        <span class="glyphicon glyphicon-text-background" title="Textad"></span>
-                                                        %end
-                                                    %end
-                                                %end
-                                                %formattedTime = show['time'].replace(":", "")
-                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
-                                        %end
-                                        </div>
-                            </div>
-                        </div>
-                    %end
+                                %end
                     %movieIndex = movieIndex + 1
             
                     %end

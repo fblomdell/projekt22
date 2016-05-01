@@ -61,6 +61,7 @@ def sortFunc(movieList, showList):
         movieDict['shortDescription'] = movie['shortDescription']
         movieDict['age'] = movie['age']
         movieDict['mediumPoster'] = movie['mediumPoster']
+        movieDict['highQualityTrailerLink'] = movie['highQualityTrailerLink']
         movieDict['actors'] = movie['actors']
         movieDict['directors'] = movie['directors']
         movieDict['shows'] = []

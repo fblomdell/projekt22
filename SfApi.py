@@ -100,6 +100,7 @@ def sortLists():
         movieDict['shortDescription'] = movie['shortDescription']
         movieDict['age'] = movie['age']
         movieDict['mediumPoster'] = movie['mediumPoster']
+        movieDIct['highQualityTrailerLink'] = movie['highQualityTrailerLink']
         movieDict['actors'] = movie['actors']
         movieDict['directors'] = movie['directors']
         movieDict['shows'] = []
