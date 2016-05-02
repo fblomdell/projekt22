@@ -36,7 +36,8 @@ def cinema():
         sortedList = sortFunc(movieList, showList)
 
     todaysDate = time.strftime('%Y%m%d')
-    return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID, sortedList=sortedList, date=todaysDate)
+    nowTime = time.strftime('%H%M')
+    return template('index', nowTime=nowTime, url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID, sortedList=sortedList, date=todaysDate)
 
 
 def sortFunc(movieList, showList):

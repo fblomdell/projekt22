@@ -106,31 +106,40 @@
                                             </div>
                                         <div class="showBox">
                                                 %for show in movie['shows']:
-
-                                                    <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
-                                                        {{show['numberOfAvailableSeats']}}</abbr>
-                                                        %for tag in show['tags']:
-                                                            %if tag:
-                                                                %if tag['tagName'] == "3D":
-                                                                <abbr title="3D">
-                                                                <span class="glyphicon glyphicon-sunglasses"></span></abbr>
-                                                                %elif tag['tagName'] == "sv":
-                                                                <abbr title="Svensk tal">SV</abbr>
-                                                                %elif tag['tagName'] == "Subtitled":
-                                                                <span class="glyphicon glyphicon-text-background" title="Textad"></span>
-                                                                %elif tag['tagName'] == "IMAX 3D":
-                                                                <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: aqua;"></span></abbr>
-                                                                %elif tag['tagName'] == "Dolby Atmos":
-                                                                <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
-                                                                %elif tag['tagName'] == "TrolleyShow":
-                                                                <abbr title="Barnvagnsbio"><i class="icon-stroller"></i></abbr>
+                                                %formattedTime = show['time'].replace(":", "")
+                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                    <div class="showDetails">
+                                                        <div class="timeCol showCol">
+                                                            <p>{{show['time']}}</p>
+                                                        </div>
+                                                        <div class="seatCol showCol" style="top: -2px;">
+                                                            <p><abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"> </i>{{show['numberOfAvailableSeats']}}</abbr></p>
+                                                        </div>
+                                                        <div class="tagCol showCol">
+                                                            %for tag in show['tags']:
+                                                                %if tag:
+                                                                    %if tag['tagName'] == "3D":
+                                                                    <abbr title="3D">
+                                                                    <span class="glyphicon glyphicon-sunglasses"></span></abbr>
+                                                                    %elif tag['tagName'] == "sv":
+                                                                    <abbr title="Svensk tal">SV</abbr>
+                                                                    %elif tag['tagName'] == "IMAX 3D":
+                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: aqua;"></span></abbr>
+                                                                    %elif tag['tagName'] == "Dolby Atmos":
+                                                                    <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
+                                                                    %elif tag['tagName'] == "TrolleyShow":
+                                                                    <abbr title="Barnvagnsbio"><i class="icon-stroller"></i></abbr>
+                                                                    %end
                                                                 %end
                                                             %end
-                                                        %end
-                                                        %formattedTime = show['time'].replace(":", "")
-                                                        <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
+                                                        </div>
+                                                        <div class="bookCol showCol">
+                                                            <p>BOKA</p>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                                 %end
-                                                </div>
+                                        </div>
                                     </div>
                                 %elif movieIndex % 6 != 5:
                                     <div class="col-sm-2 tablecelldiv">
@@ -140,10 +149,17 @@
 
                                                 </div>
                                             <div class="showBox">
-                                                    %for show in movie['shows']:
-
-                                                        <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
-                                                            {{show['numberOfAvailableSeats']}}</abbr>
+                                                %for show in movie['shows']:
+                                                %formattedTime = show['time'].replace(":", "")
+                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                    <div class="showDetails">
+                                                        <div class="timeCol showCol">
+                                                            <p>{{show['time']}}</p>
+                                                        </div>
+                                                        <div class="seatCol showCol" style="top: -2px;">
+                                                            <p><abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"> </i>{{show['numberOfAvailableSeats']}}</abbr></p>
+                                                        </div>
+                                                        <div class="tagCol showCol">
                                                             %for tag in show['tags']:
                                                                 %if tag:
                                                                     %if tag['tagName'] == "3D":
@@ -151,8 +167,6 @@
                                                                     <span class="glyphicon glyphicon-sunglasses"></span></abbr>
                                                                     %elif tag['tagName'] == "sv":
                                                                     <abbr title="Svensk tal">SV</abbr>
-                                                                    %elif tag['tagName'] == "Subtitled":
-                                                                    <span class="glyphicon glyphicon-text-background" title="Textad"></span>
                                                                     %elif tag['tagName'] == "IMAX 3D":
                                                                     <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: aqua;"></span></abbr>
                                                                     %elif tag['tagName'] == "Dolby Atmos":
@@ -162,10 +176,14 @@
                                                                     %end
                                                                 %end
                                                             %end
-                                                            %formattedTime = show['time'].replace(":", "")
-                                                            <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
-                                                    %end
+                                                        </div>
+                                                        <div class="bookCol showCol">
+                                                            <p>BOKA</p>
+                                                        </div>
                                                     </div>
+                                                </a>
+                                                %end
+                                        </div>
                                         </div>
                                 %else:
                                         <div class="col-sm-2 tablecelldiv">
@@ -175,10 +193,17 @@
 
                                                 </div>
                                             <div class="showBox">
-                                                    %for show in movie['shows']:
-
-                                                        <p>{{show['time']}} - <abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"></i>
-                                                            {{show['numberOfAvailableSeats']}}</abbr>
+                                                %for show in movie['shows']:
+                                                %formattedTime = show['time'].replace(":", "")
+                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                    <div class="showDetails">
+                                                        <div class="timeCol showCol">
+                                                            <p>{{show['time']}}</p>
+                                                        </div>
+                                                        <div class="seatCol showCol" style="top: -2px;">
+                                                            <p><abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"> </i>{{show['numberOfAvailableSeats']}}</abbr></p>
+                                                        </div>
+                                                        <div class="tagCol showCol">
                                                             %for tag in show['tags']:
                                                                 %if tag:
                                                                     %if tag['tagName'] == "3D":
@@ -186,8 +211,6 @@
                                                                     <span class="glyphicon glyphicon-sunglasses"></span></abbr>
                                                                     %elif tag['tagName'] == "sv":
                                                                     <abbr title="Svensk tal">SV</abbr>
-                                                                    %elif tag['tagName'] == "Subtitled":
-                                                                    <span class="glyphicon glyphicon-text-background" title="Textad"></span>
                                                                     %elif tag['tagName'] == "IMAX 3D":
                                                                     <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: aqua;"></span></abbr>
                                                                     %elif tag['tagName'] == "Dolby Atmos":
@@ -197,10 +220,14 @@
                                                                     %end
                                                                 %end
                                                             %end
-                                                            %formattedTime = show['time'].replace(":", "")
-                                                            <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}"><button style="float: right; color: black;">Boka</button></a></p>
-                                                    %end
+                                                        </div>
+                                                        <div class="bookCol showCol">
+                                                            <p>BOKA</p>
+                                                        </div>
                                                     </div>
+                                                </a>
+                                                %end
+                                    </div>
                                         </div>
                                     <!-- End row -->
                                     </div>
@@ -216,62 +243,41 @@
                         <div class="modal-dialog modal-lg" id="movieInfoModal">
                             <div class="modal-content" style="background-color: black; color: white; box-shadow: 0 0px 50px rgba(255, 0, 0, 0.5)">
                                 <div class="row">
-                <div class="col-lg-12" id="posterOverlay" style="">
-                </div>
-                <h1 id="posterTitle">Titel</h1>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
-                                    <video class="embed-responsive-item" controls poster="https://sites.psu.edu/connorzimmerman/wp-content/uploads/sites/4939/2014/01/movie-reel.png">
-                                        <source src="">
-                                    </video>
+                                    <div class="col-lg-12" id="posterOverlay" style="">
+                                    </div>
+                                    <h1 id="posterTitle">Titel</h1>
                                 </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <h2 id="genreAge">Genre, ålder</h2>
-                                <span style="float:left; width: 50%; height: 100px; overflow-y: scroll;">
-                                    <h3 style="margin-top: 0px;">Skådespelare</h3>
-                                    <p id="actors">
-                                        Actors
-                                    </p>
-                                </span>
-                                <span style="float:right;text-align:right; width: 50%; height: 100px;">
-                                    <h3 style="margin-top: 0px;">Regissör</h3>
-                                    <p id="directors">
-                                        Regissör
-                                    </p>
-                                </span>
-                                <span style="clear:both;border-top: 1px solid #000;">
-                                <p id="desc"></p></span>
-                            </div>
-                            <div class="col-lg-12" style="border-top: 1px solid #999;">
-                                <div class="rows">
-                                    <h4>Filmstaden</h4>
-                                    <div class="col-xs-3 movieShowDetails">
-                                        <h3>21:00</h3>
-                                        <h4>3D, Textad</h4>
-                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
-                                    </div>
-                                    <div class="col-xs-3 movieShowDetails">
-                                        <h3>22:00</h3>
-                                        <h4>3D, Textad</h4>
-                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
-                                    </div>
-                                    <div class="col-xs-3 movieShowDetails">
-                                        <h3>23:00</h3>
-                                        <h4>3D</h4>
-                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
-                                    </div>
-                                    <div class="col-xs-3 movieShowDetails">
-                                        <h3>23:55</h3>
-                                        <h4>Textad</h4>
-                                        <button type="button" class="btn btn-danger btn-primary" style="width: 100%;">Boka</button>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
+                                        <video class="embed-responsive-item" controls poster="https://sites.psu.edu/connorzimmerman/wp-content/uploads/sites/4939/2014/01/movie-reel.png">
+                                            <source src="">
+                                        </video>
                                     </div>
                                 </div>
+                                <div class="col-lg-7">
+                                    <h2 id="genreAge">Genre, ålder</h2>
+                                    <span style="float:left; width: 50%; height: 100px; overflow-y: scroll;">
+                                        <h3 style="margin-top: 0px;">Skådespelare</h3>
+                                        <p id="actors">
+                                            Actors
+                                        </p>
+                                    </span>
+                                    <span style="float:right;text-align:right; width: 50%; height: 100px;">
+                                        <h3 style="margin-top: 0px;">Regissör</h3>
+                                        <p id="directors">
+                                            Regissör
+                                        </p>
+                                    </span>
+                                    <span style="clear:both;border-top: 1px solid #000;">
+                                    <p id="desc"></p></span>
+                                </div>
                             </div>
+                            <div class="row" id="showRow">
+                                
+                            </div>
+                                
                         </div>
-                            </div>
                         </div>
                         </div>
 </div>

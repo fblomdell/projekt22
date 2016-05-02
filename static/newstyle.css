@@ -178,7 +178,13 @@ box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,1);
     padding-right: 0px;
     padding-left: 0px;
 }
-
+.showBox > a{
+    color: white;
+}
+.showBox > a:hover{
+    color: #ccf;
+    text-decoration: none;
+}
 .showBox{
     font-size: 11px;/*
     position: absolute;
@@ -192,7 +198,24 @@ box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,1);
     padding-left: 10px;
     padding-right: 10px;
 }
-
+.showDetails{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.showCol{
+    display: inline-block;
+}
+.timeCol{
+    width: 20%;
+}
+.seatCol{
+    top: -2px;
+    width: 20%;
+}
+.tagCol{
+    text-align: center;
+    width: 35%;
+}
 .movie{
     cursor: pointer;
     cursor: hand;
