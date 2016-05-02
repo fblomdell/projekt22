@@ -1482,12 +1482,21 @@ hr {
 }
 
 .h1,h2 {
-    font-size: 28px;
+    font-size: 20px;
     margin-left:25px;
     text-align: left;
     font-family:'Abel',sans-serif;
+    color: #B5AEAE;
 }
 
+#frontpage_text {
+    font-family:'Abel',sans-serif;
+    color: #B5AEAE;
+    margin-left:25px;
+    
+    
+    font-size: 16px;
+}
 
 
 .h3,h3 {

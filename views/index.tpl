@@ -17,13 +17,13 @@
     </head>
     <header>
         <h1>FILMDAGS</h1>
-       
+       %firstVisit = True
         <!-- Låda med dropdown-menyerna stad och biograf -->
             <div class="well cityCinemaBox">
                 <form action="/movies" method="post">
                     <div class="form-group col-md-6">
                         <select class="form-control" onchange="this.form.submit()" name="city">
-                            <option value="" disabled selected>Stad</option>
+                            <option value="" disabled selected>1. Välj stad</option>
                             %try:
                                 <!--{{!cityID}}-->
                             %except NameError:
@@ -36,7 +36,7 @@
                                     %if cityID == city['id']:
                                         <option value="{{city['id']}}" selected>{{city['name']}}</option>
                                         %chosenCity = city
-
+                                        %firstVisit = False
                                     %else:
                                         <option value="{{city['id']}}">{{city['name']}}</option> 
                                     %end
@@ -45,14 +45,15 @@
                         </select>
                     </div>
                     <div class="form-group col-md-6">
-                        <select class="form-control" name="cinema" onchange="this.form.submit()">
-                            <option disabled selected>Biograf</option>
                             %try:
                                 <!--{{!cinemaList}}-->
                             %except NameError:
-                                pass
+                                <select class="form-control" name="cinema" onchange="this.form.submit()" disabled>
+                                    <option disabled selected>2. Välj biograf</option>
                             %else:
                                 <!-- Listar alla biografer som finns i den vada staden och sätter select på den biograf som användaren väljer -->
+                                <select class="form-control" name="cinema" onchange="this.form.submit()">
+                                    <option disabled selected>Välj biograf</option>
                                 %for cinema in cinemaList['theatres']:
                                     %if str(chosenCinemaID) == str(cinema['id']):
                                         <option value="{{cinema['id']}}" selected>{{cinema['name']}}</option>
@@ -74,12 +75,21 @@
         
         <div class="container">
             %try:
-                <h2>{{chosenCity['name'].upper()}} > {{chosenCinema['name'].upper()}}</h2>
+                <h2>{{chosenCity['name'].upper()}} <span class="glyphicon glyphicon-menu-right" style="color: #fff; font-size: 18px;"></span> {{chosenCinema['name'].upper()}}</h2>
                 
             %except NameError:
-                <h2>FILMDAGS</h2>
+                
             %end
+                
             <hr>
+            %if firstVisit == True:
+                <div id="frontpage_text">
+                    
+               Denna sida är skapad i syftet att presentera filmvisningar på SFs biografer på ett tydligare och enklare sätt. 
+<p>Testa själv! Börja med att välja stad.</p>
+                </div>
+                %end
+            
             <!-- Denna div visar en rad med thumbnails. 4 videos kan få plats på en rad (går att ändra enkelt) -->
                     %import json
                     %try:
