@@ -1,4 +1,8 @@
 ﻿import requests, json, datetime, time
+from time import gmtime, strftime
+from datetime import timedelta
+
+
 # -*- coding: utf-8 -*-
 
 def auth():
@@ -100,7 +104,6 @@ def sortLists():
         movieDict['shortDescription'] = movie['shortDescription']
         movieDict['age'] = movie['age']
         movieDict['mediumPoster'] = movie['mediumPoster']
-        movieDIct['highQualityTrailerLink'] = movie['highQualityTrailerLink']
         movieDict['actors'] = movie['actors']
         movieDict['directors'] = movie['directors']
         movieDict['shows'] = []
@@ -126,11 +129,23 @@ def sortLists():
                     oneShow['tags'] = show['tags']
                     oneShow['title'] = show['title']
                     oneShow['movieId'] = show['movieId']
+
+                    #check if a show has passed
+                    startTime = datetime.datetime.strptime((show['time']), '%H:%M')
+                    timeNow = datetime.datetime.strptime((strftime("%H:%M")), '%H:%M')
+                    showPassed = (startTime - timeNow)
                     
+                    
+                    
+                        
+                    #check if key is matching in IdList and moviesToday                 
                     for key1, value1 in moviesToday.items():
                         if str(key1) == str(key):
-                            #for showKey in value1:
-                            value1['shows'].append(dict(oneShow))
+                            if str(showPassed)[:1] != '-':
+                                
+                                #for showKey in value1:
+                                value1['shows'].append(dict(oneShow))
+                                
                             
 
     #remove movies that has no show today
@@ -143,10 +158,14 @@ def sortLists():
     for k, v in moviesToday.iteritems():
         print k, v['shows']
     '''
+    #print (strftime("%H:%M"))
+    
+    
+
     
     return moviesToday
     
-
+#sortLists()
 
 
 

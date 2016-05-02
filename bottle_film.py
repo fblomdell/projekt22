@@ -4,6 +4,7 @@ from bottle import Bottle, run, route, template, url, view, static_file, request
 from SfApi import getCities, getCinemas, getCinemaMovies, getMovieDetails, getMovies
 import json
 import datetime, time
+from time import strftime
 
 @route("/")
 #@view("index")
@@ -87,11 +88,22 @@ def sortFunc(movieList, showList):
                     oneShow['tags'] = show['tags']
                     oneShow['title'] = show['title']
                     oneShow['movieId'] = show['movieId']
+
+                    #check if a show has passed
+                    startTime = datetime.datetime.strptime((show['time']), '%H:%M')
+                    timeNow = datetime.datetime.strptime((strftime("%H:%M")), '%H:%M')
+                    showPassed = (startTime - timeNow)
                     
+                    
+                    
+                        
+                    #check if key is matching in IdList and moviesToday                 
                     for key1, value1 in moviesToday.items():
                         if str(key1) == str(key):
-                            #for showKey in value1:
-                            value1['shows'].append(dict(oneShow))
+                            if str(showPassed)[:1] != '-':
+                                
+                                #for showKey in value1:
+                                value1['shows'].append(dict(oneShow))
                             
 
     #remove movies that has no show today
