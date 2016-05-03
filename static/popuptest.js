@@ -17,7 +17,7 @@ function populateModal(movie){
     $('#actors').text(actorList);
     $('#desc').text(movie['shortDescription']);
     $('#directors').text(movie['directors'][0]['name']);
-    $('#posterOverlay').css('background-image', 'url(' + movie['mediumPoster'] + ')');
+    $('#posterOverlay').css('background-image', 'url(' + upgradePoster(movie['mediumPoster']) + ')');
 }
 
 function resetModal(){
@@ -36,11 +36,11 @@ function resetModal(){
     $('#actors').text(actorList);
     $('#desc').text(movie['shortDescription']);
     $('#directors').text(movie['directors'][0]['name']);
-    $('#posterOverlay').css('background-image', 'url(' + movie['mediumPoster'] + ')');
+    $('#posterOverlay').css('background-image', 'url(' + upgradePoster(movie['mediumPoster']) + ')');
 }
 
 function upgradePoster(placeholderBanner){
-    var newURL = placeholderBanner.replace("75", "900");
+    var newURL = placeholderBanner.replace("/75/", "/900/");
     return newURL
 }
 
@@ -52,7 +52,6 @@ $(document).ready(function(){
     });
     
     $('[data-toggle="tooltip"]').tooltip();
-    
     //for(var i = 0; i < obj.shows.length; i++){
     //    updateModalTime(i);
     //}

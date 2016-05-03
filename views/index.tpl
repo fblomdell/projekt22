@@ -100,7 +100,7 @@
                         %movieIndex = 0
                         %for movieID, movie in sortedList.items():
                             %print len(sortedList.items())
-                            %if movieIndex == len(sortedList.items()):
+                            %if movieIndex == len(sortedList.items()) and movieIndex % 6 != 5:
                                 </div>
                             %end
                             %movieText = json.dumps(movie)
@@ -117,7 +117,7 @@
                                         <div class="showBox">
                                                 %for show in movie['shows']:
                                                 %formattedTime = show['time'].replace(":", "")
-                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                
                                                     <div class="showDetails">
                                                         <div class="timeCol showCol">
                                                             <p>{{show['time']}}</p>
@@ -143,11 +143,12 @@
                                                                 %end
                                                             %end
                                                         </div>
-                                                        <div class="bookCol showCol">
-                                                            <p>BOKA</p>
-                                                        </div>
+                                                        <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                            <div class="bookCol showCol">
+                                                                <p>BOKA</p>
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                </a>
                                                 %end
                                         </div>
                                     </div>
@@ -161,7 +162,6 @@
                                             <div class="showBox">
                                                 %for show in movie['shows']:
                                                 %formattedTime = show['time'].replace(":", "")
-                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
                                                     <div class="showDetails">
                                                         <div class="timeCol showCol">
                                                             <p>{{show['time']}}</p>
@@ -187,11 +187,12 @@
                                                                 %end
                                                             %end
                                                         </div>
-                                                        <div class="bookCol showCol">
-                                                            <p>BOKA</p>
-                                                        </div>
+                                                            <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                                <div class="bookCol showCol">
+                                                                    <p>BOKA</p>
+                                                                </div>
+                                                            </a>
                                                     </div>
-                                                </a>
                                                 %end
                                         </div>
                                         </div>
@@ -205,7 +206,7 @@
                                             <div class="showBox">
                                                 %for show in movie['shows']:
                                                 %formattedTime = show['time'].replace(":", "")
-                                                <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                
                                                     <div class="showDetails">
                                                         <div class="timeCol showCol">
                                                             <p>{{show['time']}}</p>
@@ -231,11 +232,12 @@
                                                                 %end
                                                             %end
                                                         </div>
-                                                        <div class="bookCol showCol">
-                                                            <p>BOKA</p>
-                                                        </div>
+                                                        <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                            <div class="bookCol showCol">
+                                                                <p>BOKA</p>
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                </a>
                                                 %end
                                     </div>
                                         </div>
@@ -249,7 +251,7 @@
                     %end
                     
                     <!-- Här börjar popup-fönstret -->
-                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
                         <div class="modal-dialog modal-lg" id="movieInfoModal">
                             <div class="modal-content" style="background-color: black; color: white; box-shadow: 0 0px 50px rgba(255, 0, 0, 0.5)">
                                 <div class="row">
