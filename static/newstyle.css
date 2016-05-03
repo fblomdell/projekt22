@@ -173,11 +173,7 @@ box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,1);
     padding-left: 0px;
 }
 .showDetails > a{
-    color: white;
-}
-.showDetails > a:hover{
-    color: #ccf;
-    text-decoration: none;
+    color: black;
 }
 .showBox{
     font-size: 11px;/*
@@ -210,9 +206,12 @@ box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,1);
 }
 .tagCol{
     text-align: center;
-    width: 35%;
+    width: 29%;
 }
 .movie{
     cursor: pointer;
     cursor: hand;
+}
+.bookCol{
+    
 }

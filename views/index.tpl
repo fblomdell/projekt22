@@ -161,7 +161,7 @@
                                                         </div>
                                                         <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
                                                             <div class="bookCol showCol">
-                                                                <p>BOKA</p>
+                                                                <button type="button">Boka</button>
                                                             </div>
                                                         </a>
                                                     </div>
@@ -205,7 +205,7 @@
                                                         </div>
                                                             <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
                                                                 <div class="bookCol showCol">
-                                                                    <p>BOKA</p>
+                                                                    <button type="button">Boka</button>
                                                                 </div>
                                                             </a>
                                                     </div>
@@ -250,7 +250,7 @@
                                                         </div>
                                                         <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
                                                             <div class="bookCol showCol">
-                                                                <p>BOKA</p>
+                                                                <button type="button">Boka</button>
                                                             </div>
                                                         </a>
                                                     </div>
