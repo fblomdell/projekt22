@@ -206,12 +206,12 @@ box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,1);
 }
 .tagCol{
     text-align: center;
-    width: 29%;
+    width: 28%;
 }
 .movie{
     cursor: pointer;
     cursor: hand;
 }
 .bookCol{
-    
+    float: right;
 }
