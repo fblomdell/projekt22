@@ -134,7 +134,7 @@
                                                                     %elif tag['tagName'] == "sv":
                                                                     <abbr title="Svensk tal">SV</abbr>
                                                                     %elif tag['tagName'] == "IMAX 3D":
-                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: aqua;"></span></abbr>
+                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: #00aacc;"></span></abbr>
                                                                     %elif tag['tagName'] == "Dolby Atmos":
                                                                     <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
                                                                     %elif tag['tagName'] == "TrolleyShow":
@@ -178,7 +178,7 @@
                                                                     %elif tag['tagName'] == "sv":
                                                                     <abbr title="Svensk tal">SV</abbr>
                                                                     %elif tag['tagName'] == "IMAX 3D":
-                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: aqua;"></span></abbr>
+                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: #00aacc;"></span></abbr>
                                                                     %elif tag['tagName'] == "Dolby Atmos":
                                                                     <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
                                                                     %elif tag['tagName'] == "TrolleyShow":
@@ -223,7 +223,7 @@
                                                                     %elif tag['tagName'] == "sv":
                                                                     <abbr title="Svensk tal">SV</abbr>
                                                                     %elif tag['tagName'] == "IMAX 3D":
-                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: aqua;"></span></abbr>
+                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: #00aacc;"></span></abbr>
                                                                     %elif tag['tagName'] == "Dolby Atmos":
                                                                     <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
                                                                     %elif tag['tagName'] == "TrolleyShow":

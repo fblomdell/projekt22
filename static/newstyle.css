@@ -195,6 +195,8 @@ box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,1);
 .showDetails{
     margin-left: 0px;
     margin-right: 0px;
+    border-top: 1px solid #777;
+    padding-top: 3px;
 }
 .showCol{
     display: inline-block;
