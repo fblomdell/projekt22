@@ -75,7 +75,7 @@
         
         <div class="container">
             %try:
-                <h2>{{chosenCity['name'].upper()}} <span class="glyphicon glyphicon-menu-right" style="color: #fff; font-size: 18px;"></span> {{chosenCinema['name'].upper()}}</h2>
+                <h2>Visningar idag, {{chosenCity['name']}} <span class="glyphicon glyphicon-menu-right" style="color: #fff; font-size: 18px;"></span> {{chosenCinema['name']}}</h2>
                 
             %except NameError:
                 
@@ -85,8 +85,8 @@
             %if firstVisit == True:
                 <div id="frontpage_text">
                     
-               Denna sida är skapad i syftet att presentera filmvisningar på SFs biografer på ett tydligare och enklare sätt. 
-<p>Testa själv! Börja med att välja stad.</p>
+               Boka biljetter snabbt och enkelt till dagens visningar hos SF. 
+<p>Testa själv! Börja med att välja stad, följt av biograf.</p>
                 </div>
                 %end
             
