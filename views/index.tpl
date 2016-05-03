@@ -10,19 +10,21 @@
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}?v=1.1">
         <link rel="stylesheet" href="{{ url('static', path='whhg.css') }}">
+        <link rel="stylesheet" href="{{ url('static', path='spinner.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
         
         <title>FilmDags</title>
        
     </head>
     <header>
+        
         <h1>FILMDAGS</h1>
        %firstVisit = True
         <!-- Låda med dropdown-menyerna stad och biograf -->
             <div class="well cityCinemaBox">
                 <form action="/movies" method="post">
                     <div class="form-group col-md-6">
-                        <select class="form-control" onchange="this.form.submit()" name="city">
+                        <select class="form-control" onchange="this.form.submit(); $('.sk-circle').show()" name="city">
                             <option value="" disabled selected>1. Välj stad</option>
                             %try:
                                 <!--{{!cityID}}-->
@@ -52,7 +54,7 @@
                                     <option disabled selected>2. Välj biograf</option>
                             %else:
                                 <!-- Listar alla biografer som finns i den vada staden och sätter select på den biograf som användaren väljer -->
-                                <select class="form-control" name="cinema" onchange="this.form.submit()">
+                                <select class="form-control" name="cinema" onchange="this.form.submit(); $('.sk-circle').show()">
                                     <option disabled selected>Välj biograf</option>
                                 %for cinema in cinemaList['theatres']:
                                     %if str(chosenCinemaID) == str(cinema['id']):
@@ -71,7 +73,7 @@
     </header>
     <body>
         
-        <!-- Behövs för att skicka filminfo till popup (måste finnas ett bättre sätt) -->
+        <!-- Behövs för att skicka filminfo till popup (måste finnas ett bättre sätt) -->   
         
         <div class="container">
             %try:
@@ -89,7 +91,21 @@
 <p>Testa själv! Börja med att välja stad, följt av biograf.</p>
                 </div>
                 %end
-            
+                
+                    <div class="sk-circle" style="display: none;">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
+      </div>
             <!-- Denna div visar en rad med thumbnails. 4 videos kan få plats på en rad (går att ändra enkelt) -->
                     %import json
                     %try:
