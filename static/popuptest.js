@@ -17,33 +17,12 @@ function populateModal(movie){
     $('#actors').text(actorList);
     $('#desc').text(movie['shortDescription']);
     $('#directors').text(movie['directors'][0]['name']);
-    $('#posterOverlay').css('background-image', 'url(' + upgradePoster(movie['mediumPoster']) + ')');
-}
-
-function resetModal(){
-    $('#posterTitle').text("Titel");
-    $('#genreAge').text("X, Y");
-    $('.embed-responsive-item').attr('src', movie['highQualityTrailerLink']);
-    var actorList = "";
-    for (i = 0; i <= movie['actors'].length-1; i++){
-        if(i != movie['actors'].length-1){
-            actorList += movie['actors'][i]['name'] + ", ";
-        }
-        else{
-            actorList += movie['actors'][i]['name']
-        }
-    }
-    $('#actors').text(actorList);
-    $('#desc').text(movie['shortDescription']);
-    $('#directors').text(movie['directors'][0]['name']);
-    $('#posterOverlay').css('background-image', 'url(' + upgradePoster(movie['mediumPoster']) + ')');
 }
 
 function upgradePoster(placeholderBanner){
     var newURL = placeholderBanner.replace("/75/", "/900/");
     return newURL
 }
-
 
 $(document).ready(function(){
     $('body').on('hidden.bs.modal', '.modal', function () {
@@ -56,5 +35,3 @@ $(document).ready(function(){
     //    updateModalTime(i);
     //}
 });
-
-

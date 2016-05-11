@@ -269,42 +269,32 @@
                     <!-- Här börjar popup-fönstret -->
                     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
                         <div class="modal-dialog modal-lg" id="movieInfoModal">
-                            <div class="modal-content" style="background-color: black; color: white; box-shadow: 0 0px 50px rgba(255, 0, 0, 0.5)">
+                            <div class="modal-content" style="background-color: black; color: white; box-shadow: 0 0px 50px rgba(255, 255, 255, 0.5)">
                                 <div class="row">
-                                    <div class="col-lg-12" id="posterOverlay" style="">
-                                    </div>
                                     <h1 id="posterTitle">Titel</h1>
+                                    <h2 id="genreAge">Genre ålder</h2>
                                 </div>
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
-                                        <video class="embed-responsive-item" controls poster="https://sites.psu.edu/connorzimmerman/wp-content/uploads/sites/4939/2014/01/movie-reel.png">
-                                            <source src="">
-                                        </video>
+                                <div class="row">
+                                    <div class="col-lg-12" style="padding: 0px;">
+                                        <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
+                                            <video class="embed-responsive-item" controls poster="https://sites.psu.edu/connorzimmerman/wp-content/uploads/sites/4939/2014/01/movie-reel.png">
+                                                <source src="">
+                                            </video>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-7">
-                                    <h2 id="genreAge">Genre, ålder</h2>
-                                    <span style="float:left; width: 50%; height: 100px; overflow-y: scroll;">
-                                        <h3 style="margin-top: 0px;">Skådespelare</h3>
-                                        <p id="actors">
-                                            Actors
-                                        </p>
-                                    </span>
-                                    <span style="float:right;text-align:right; width: 50%; height: 100px;">
-                                        <h3 style="margin-top: 0px;">Regissör</h3>
-                                        <p id="directors">
-                                            Regissör
-                                        </p>
-                                    </span>
-                                    <span style="clear:both;border-top: 1px solid #000;">
-                                    <p id="desc"></p></span>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3 style="font-family:'Abel',sans-serif;">Beskrivning</h3>
+                                        <p id="desc"></p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h3 style="font-family:'Abel',sans-serif;">Skådespelare</h3>
+                                        <p id="actors"></p>
+                                        <h3 style="font-family:'Abel',sans-serif;">Regissör</h3>
+                                        <p id="directors"></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row" id="showRow">
-                                
-                            </div>
-                                
                         </div>
                         </div>
                         </div>

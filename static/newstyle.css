@@ -31,7 +31,7 @@ hr {
 }
 
 .trailerEmbed{
-    padding-top: 60px;
+    
 }
 
 .modal-content > h4{
@@ -131,25 +131,21 @@ transform:translatey(0);
 }
 
 #movieInfoModal{
-    width:80%;
+    width:50%;
 }
-#posterOverlay{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 5%;
-    height: 150px;
+.modal-content > .row{
+    margin-left: 0px;
+    margin-right: 0px;
+    
 }
 
 #posterTitle{
+    font-family:'Abel',sans-serif;
     text-align: center;
-    color:#FFF;
-    text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.77);
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 100px;
+}
+#genreAge{
+    text-align: center;
+    margin-left: 0px;
 }
 
 .movieShowDetails{
@@ -214,4 +210,23 @@ box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,1);
 }
 .bookCol{
     float: right;
+}
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
 }
