@@ -278,7 +278,7 @@
                                 <div class="row">
                                     <div class="col-lg-12" style="padding: 0px;">
                                         <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
-                                            <video class="embed-responsive-item" controls poster="https://sites.psu.edu/connorzimmerman/wp-content/uploads/sites/4939/2014/01/movie-reel.png">
+                                            <video class="embed-responsive-item" controls poster="http://soterixmedical.com/static/videos/videos/_play_button.png">
                                                 <source src="">
                                             </video>
                                         </div>

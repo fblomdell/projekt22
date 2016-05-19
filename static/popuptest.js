@@ -28,8 +28,9 @@ $(document).ready(function(){
     $('body').on('hidden.bs.modal', '.modal', function () {
         $('video').trigger('pause');
         document.title = "FilmDags";
+        
     });
-    
+    $('video').click(function(){this.paused?this.play():this.pause();});
     $('[data-toggle="tooltip"]').tooltip();
     //for(var i = 0; i < obj.shows.length; i++){
     //    updateModalTime(i);
