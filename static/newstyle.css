@@ -350,3 +350,10 @@ h2{
  
     }
 }
+
+.citiesCinemaDropdown{
+    margin-top: 15%;
+}
+.citiesCinemaDropdown > select{
+    width: 300px;
+}

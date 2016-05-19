@@ -11,7 +11,7 @@ from time import strftime
 def index():
     
     allCities = getCities()
-    return template('index', url=url, allCities=allCities)
+    return template('start', url=url, allCities=allCities)
 
 @route("/static/:path#.+#", name="static")
 def server_static(path):
@@ -29,7 +29,7 @@ def cinema():
     chosenCinemaID = request.forms.get('cinema')
     
     if chosenCinemaID == None:
-        return template('index', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID)
+        return template('start', url=url, allCities=allCities, cityID=cityID, cinemaList=cinemaList, chosenCinemaID=chosenCinemaID)
     else:
         showList = getCinemaMovies(cityID, chosenCinemaID)           
         
