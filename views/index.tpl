@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="{{ url('static', path='whhg.css') }}">
         <link rel="stylesheet" href="{{ url('static', path='spinner.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <title>FilmDags</title>
        
