@@ -353,6 +353,8 @@ h2{
 
 .citiesCinemaDropdown{
     margin-top: 15%;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .citiesCinemaDropdown > select{
     width: 300px;

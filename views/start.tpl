@@ -38,8 +38,8 @@
             <hr>
             <div class="row citiesCinemaDropdown">
                 <form action="/movies" method="post">
-                <div class="col-lg-6">
-                    <select class="form-control" onchange="this.form.submit(); $('.sk-circle').show()" name="city" style="width: 300px; float:right;">
+                <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-lg-4 col-lg-offset-2" style="margin-bottom: 5px;">
+                    <select class="form-control" onchange="this.form.submit(); $('.sk-circle').show()" name="city">
                             <option value="" disabled selected>1. Välj stad</option>
                             %try:
                                 <!--{{!cityID}}-->
@@ -61,15 +61,15 @@
                             %end
                         </select>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-xs-12 col-sm-5 col-lg-4">
                     %try:
                                 <!--{{!cinemaList}}-->
                             %except NameError:
-                                <select class="form-control" name="cinema" onchange="this.form.submit()" disabled  style="width: 300px;">
+                                <select class="form-control" name="cinema" onchange="this.form.submit()" disabled>
                                     <option disabled selected>2. Välj biograf</option>
                             %else:
                                 <!-- Listar alla biografer som finns i den vada staden och sätter select på den biograf som användaren väljer -->
-                                <select class="form-control" name="cinema" onchange="this.form.submit(); $('.sk-circle').show()" style="width: 300px; float:left;">
+                                <select class="form-control" name="cinema" onchange="this.form.submit(); $('.sk-circle').show()">
                                     <option disabled selected>Välj biograf</option>
                                 %for cinema in cinemaList['theatres']:
                                     %if str(chosenCinemaID) == str(cinema['id']):
