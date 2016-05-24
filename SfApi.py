@@ -22,17 +22,17 @@ def auth():
     response = requests.get(url, headers=headers)
     
     if response.status_code == 200:
-        print "Connected to SF"
-        print 'response code: ' +str(response.status_code)
+        print("Connected to SF")
+        print('response code: ' +str(response.status_code))
         
     else:
-        print 'Problem connecting to server'
-        print 'response code: ' +str(response.status_code) 
+        print('Problem connecting to server')
+        print('response code: ' +str(response.status_code)) 
 
 def makeCall(urlPath):
     #baseurl + urlPath = complete url to server
     baseUrl = 'https://mobilebackend.sfbio.se/services/5/'
-    print baseUrl+urlPath
+    print(baseUrl+urlPath)
     headers = {
     'X-SF-Iphone-Version': '5.4.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
