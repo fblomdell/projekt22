@@ -2,54 +2,44 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="{{ url('static', path='popuptest.js') }}"></script>
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}?v=1.1">
+        <link rel="stylesheet" href="{{ url('static', path='whhg.css') }}">
+        <link rel="stylesheet" href="{{ url('static', path='spinner.css') }}">
+        <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <title>FilmDags</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}">
-        
+       
     </head>
-    <body>
-        <nav class="navbar">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="glyphicon glyphicon-chevron-down"></span>
-              </button>
-              <a class="navbar-brand" href="#">
-                    <img src="{{ url('static', path='logoexempel.png') }}" alt="Logo" width="110px">
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Om oss</a></li>
-              </ul>
-            </div>
-        </nav>
+    <header>
         
-        <div class="container">
-            <!-- Låda med dropdown-menyerna stad och biograf -->
+        <h1>FILMDAGS</h1>
+       %firstVisit = True
+        <!-- Låda med dropdown-menyerna stad och biograf -->
             <div class="well cityCinemaBox">
                 <form action="/movies" method="post">
                     <div class="form-group col-md-6">
-                        <select class="form-control" onchange="this.form.submit()" name="city">
-                            <option value="" disabled selected>Stad</option>
+                        <select class="form-control" onchange="this.form.submit(); $('.sk-circle').show()" name="city">
+                            <option value="" disabled selected>1. Välj stad</option>
                             %try:
-                                {{!cityID}}
+                                <!--{{!cityID}}-->
                             %except NameError:
                                 %for city in allCities['cities']:
                                     <option value="{{city['id']}}">{{city['name']}}</option>
                                 %end
-                            %else: 
+                            %else:
+                                <!-- Listar alla städer som finns och sätter select på den stad som användaren väljer -->
                                 %for city in allCities['cities']:
-
                                     %if cityID == city['id']:
                                         <option value="{{city['id']}}" selected>{{city['name']}}</option>
-
+                                        %chosenCity = city
+                                        %firstVisit = False
                                     %else:
                                         <option value="{{city['id']}}">{{city['name']}}</option> 
                                     %end
@@ -58,16 +48,19 @@
                         </select>
                     </div>
                     <div class="form-group col-md-6">
-                        <select class="form-control" name="cinema" onchange="this.form.submit()">
-                            <option disabled selected>Biograf</option>
                             %try:
-                                {{!cinemaList}}
+                                <!--{{!cinemaList}}-->
                             %except NameError:
-                                pass
+                                <select class="form-control" name="cinema" onchange="this.form.submit()" disabled>
+                                    <option disabled selected>2. Välj biograf</option>
                             %else:
+                                <!-- Listar alla biografer som finns i den vada staden och sätter select på den biograf som användaren väljer -->
+                                <select class="form-control" name="cinema" onchange="this.form.submit(); $('.sk-circle').show()">
+                                    <option disabled selected>Välj biograf</option>
                                 %for cinema in cinemaList['theatres']:
                                     %if str(chosenCinemaID) == str(cinema['id']):
                                         <option value="{{cinema['id']}}" selected>{{cinema['name']}}</option>
+                                        %chosenCinema = cinema
                                     %else:
                                         <option value="{{cinema['id']}}">{{cinema['name']}}</option>
                                     %end
@@ -76,117 +69,236 @@
                         </select>
                     </div>
                 </form>
-                <!-- Knapp som när väl klickat visar lista på städer. För att lägga till städer krävs det att de läggs in som li-taggar
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Stad
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu scrollable-menu">
-                        <li><a href="#">Malmö</a></li>
-                        <li><a href="#">Göteborg</a></li>
-                        <li><a href="#">Stockholm</a></li>
-                        <li><a href="#">Visa fler...</a></li>
-                    </ul>
-                </div>
+               
+            </div>
+    </header>
+    <body>
+        
+        <!-- Behövs för att skicka filminfo till popup (måste finnas ett bättre sätt) -->   
+        
+        <div class="container">
+            %try:
+                <h2>Visningar idag, {{chosenCity['name']}} <span class="glyphicon glyphicon-menu-right" style="color: #fff; font-size: 18px;"></span> {{chosenCinema['name']}}</h2>
                 
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Biograf
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu pull-right">
-                        <li><a href="#">.....</a></li>
-                        <li><a href="#">.....</a></li>
-                        <li><a href="#">.....</a></li>
-                        <li><a href="#">.....</a></li>
-                    </ul>
+            %except NameError:
+                
+            %end
+                
+            <hr>
+            %if firstVisit == True:
+                <div id="frontpage_text">
+                    
+               Boka biljetter snabbt och enkelt till dagens visningar hos SF. 
+<p>Testa själv! Börja med att välja stad, följt av biograf.</p>
                 </div>
-                -->
-                <h1>Biograf</h1>
-            </div>
-            
-            <!-- Denna div visar en rad med thumbnails. 4 videos kan få plats på en rad (går att ändra enkelt) -->
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="thumbnail movie">
-                        <h4>The Revenant</h4>
-                        <img src="http://placehold.it/180x280" alt="The Revenant" data-toggle="modal" data-target="#modalLabel">
-                    </div>
-                </div>
-            </div>
-            
-            <!-- En modal visas när användaren klickar på filmpostern -->
-            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modalLabel">
-                <div class="modal-dialog modal-lg modalPopup">
-                    <div class="modal-content" style="padding: 15px;">
-                        <div class="row">
-                            <div class="col-lg-3" style="text-align: center;">
-                                <img src="http://placehold.it/120x200" alt="poster">
-                            </div>
-                            <div class="col-lg-9">
-                                <h3 style="text-align: center; margin-top: 0px;">The Revenant</h3>
-                                <h4>Genre</h4>
-                                <h4>12 år</h4>
-                                <p>Under en expedition i den outforskade amerikanska vildmarken blir Hugh attackerad av en björn och lämnad att dö av de andra. I sin kamp att överleva får han utstå obeskrivlig sorg och att ha blivit bedragen av sin närmaste vän John Fitzgerald. Nu är han på jakt efter upprättelse i den bittra vintern och drivs bara av ren viljestyrka och kärlek till sin familj.\r\n \r\nRegi av Oscarbelönade Alejando G. Inarritu (Birdman, Babel).</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
-                                    <video class="embed-responsive-item" controls>
-                                        <source src="http://aka-m-p.maxplatform.com/20/57/78/HD-720p_1280x720_FnjtoI_1_se_1_50063_80210_120589_1111.mp4?u=2_105462">
-                                    </video>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <h3 style="text-align: center; margin-top: 0px;">Tider</h3>
-                                <div class="rows premiereList">
-                                    <h4>Biograf 1</h4>
-                                    <div class="col-xs-12">
-                                        <p>21:00</p>
-                                        <p class="textNominator">3D</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p>22:00</p>
-                                        <p class="textNominator">3D</p>
-                                        <p class="textNominator">Textad</p>
-                                    </div>
-                                    <h4>Biograf 2</h4>
-                                    <div class="col-xs-12">
-                                        <p>21:00</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p>22:00</p>
-                                    </div>
-                                    <h4>Biograf 3</h4>
-                                    <div class="col-xs-12">
-                                        <p>21:00</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p>22:00</p>
-                                    </div>
-                                    <h4>Biograf 4</h4>
-                                    <div class="col-xs-12">
-                                        <p>21:00</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p>22:00</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <!-- TODO: När knappen klickas så ska videon pausas -->
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                %end
+                
+                    <div class="sk-circle" style="display: none;">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
       </div>
-                    </div>
-                </div>
+            <!-- Denna div visar en rad med thumbnails. 4 videos kan få plats på en rad (går att ändra enkelt) -->
+                    %import json
+                    %try:
+                        <!--{{!sortedList}}-->
+                    %except NameError:
+                        <!--pass-->
+                    %else:
+                        %movieIndex = 0
+                        %for movieID, movie in sortedList.items():
+                            %print len(sortedList.items())
+                            %if movieIndex == len(sortedList.items()) and movieIndex % 6 != 5:
+                                </div>
+                            %end
+                            %movieText = json.dumps(movie)
+                            %movieText = movieText.replace("'", "\u0027")
+                            %if movieIndex % 6 == 0:
+                                <!-- Start row -->
+                                <div class="row rowdiv">
+                                    <div class="col-sm-2 tablecelldiv">
+                                            <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
+
+                                                <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}">
+
+                                            </div>
+                                        <div class="showBox">
+                                                %for show in movie['shows']:
+                                                %formattedTime = show['time'].replace(":", "")
+                                                
+                                                    <div class="showDetails">
+                                                        <div class="timeCol showCol">
+                                                            <p>{{show['time']}}</p>
+                                                        </div>
+                                                        <div class="seatCol showCol" style="top: -2px;">
+                                                            <p><abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"> </i>{{show['numberOfAvailableSeats']}}</abbr></p>
+                                                        </div>
+                                                        <div class="tagCol showCol">
+                                                            %for tag in show['tags']:
+                                                                %if tag:
+                                                                    %if tag['tagName'] == "3D":
+                                                        <abbr title="3D">3D</abbr>
+                                                                    %elif tag['tagName'] == "sv":
+                                                        <abbr title="Svensk tal">SV</abbr>
+                                                                    %elif tag['tagName'] == "IMAX 3D":
+                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: #00aacc;"></span></abbr>
+                                                                    %elif tag['tagName'] == "Dolby Atmos":
+                                                                    <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
+                                                                    %elif tag['tagName'] == "TrolleyShow":
+                                                                    <abbr title="Barnvagnsbio"><i class="icon-stroller"></i></abbr>
+                                                                    %end
+                                                                %end
+                                                            %end
+                                                        </div>
+                                                        <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                            <div class="bookCol showCol">
+                                                                <button type="button">Boka</button>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                %end
+                                        </div>
+                                    </div>
+                                %elif movieIndex % 6 != 5:
+                                    <div class="col-sm-2 tablecelldiv">
+                                                <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
+
+                                                    <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
+
+                                                </div>
+                                            <div class="showBox">
+                                                %for show in movie['shows']:
+                                                %formattedTime = show['time'].replace(":", "")
+                                                    <div class="showDetails">
+                                                        <div class="timeCol showCol">
+                                                            <p>{{show['time']}}</p>
+                                                        </div>
+                                                        <div class="seatCol showCol" style="top: -2px;">
+                                                            <p><abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"> </i>{{show['numberOfAvailableSeats']}}</abbr></p>
+                                                        </div>
+                                                        <div class="tagCol showCol">
+                                                            %for tag in show['tags']:
+                                                                %if tag:
+                                                                    %if tag['tagName'] == "3D":
+                                                            <abbr title="3D">3D</abbr> 
+                                                                    %elif tag['tagName'] == "sv":
+                                                        <abbr title="Svensk tal">SV</abbr>
+                                                                    %elif tag['tagName'] == "IMAX 3D":
+                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: #00aacc;"></span></abbr>
+                                                                    %elif tag['tagName'] == "Dolby Atmos":
+                                                                    <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
+                                                                    %elif tag['tagName'] == "TrolleyShow":
+                                                                    <abbr title="Barnvagnsbio"><i class="icon-stroller"></i></abbr>
+                                                                    %end
+                                                                %end
+                                                            %end
+                                                        </div>
+                                                            <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                                <div class="bookCol showCol">
+                                                                    <button type="button">Boka</button>
+                                                                </div>
+                                                            </a>
+                                                    </div>
+                                                %end
+                                        </div>
+                                        </div>
+                                %else:
+                                        <div class="col-sm-2 tablecelldiv">
+                                                <div class="thumbnail movie" id="{{!movieID}}" data-toggle="modal" data-target=".bs-example-modal-lg" onclick='populateModal({{!movieText}})'>
+
+                                                    <img src="https://mobilebackend.sfbio.se/image/POSTER/200/-/{{movieID}}.jpg" alt="{{!movie['movieName']}}" />
+
+                                                </div>
+                                            <div class="showBox">
+                                                %for show in movie['shows']:
+                                                %formattedTime = show['time'].replace(":", "")
+                                                
+                                                    <div class="showDetails">
+                                                        <div class="timeCol showCol">
+                                                            <p>{{show['time']}}</p>
+                                                        </div>
+                                                        <div class="seatCol showCol" style="top: -2px;">
+                                                            <p><abbr title="{{show['numberOfAvailableSeats']}} lediga platser"><i class="icon-chair"> </i>{{show['numberOfAvailableSeats']}}</abbr></p>
+                                                        </div>
+                                                        <div class="tagCol showCol">
+                                                            %for tag in show['tags']:
+                                                                %if tag:
+                                                                    %if tag['tagName'] == "3D":
+                                                        <abbr title="3D">3D</abbr>
+                                                                    %elif tag['tagName'] == "sv":
+                                                        <abbr title="Svensk tal">SV</abbr>
+                                                                    %elif tag['tagName'] == "IMAX 3D":
+                                                                    <abbr title="IMAX 3D"><span class="glyphicon glyphicon-sunglasses" style="color: #00aacc;"></span></abbr>
+                                                                    %elif tag['tagName'] == "Dolby Atmos":
+                                                                    <abbr title="Dolby Atmos"><span class="glyphicon glyphicon-sound-dolby"></span></abbr>
+                                                                    %elif tag['tagName'] == "TrolleyShow":
+                                                                    <abbr title="Barnvagnsbio"><i class="icon-stroller"></i></abbr>
+                                                                    %end
+                                                                %end
+                                                            %end
+                                                        </div>
+                                                        <a href="http://www.sf.se/biljetter/bokningsflodet/valj-antal-biljetter/?Auditorium={{show['auditoriumsys99Code']}}&Date={{date}}&Time={{formattedTime}}&City={{cityID}}">
+                                                            <div class="bookCol showCol">
+                                                                <button type="button">Boka</button>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                %end
+                                    </div>
+                                        </div>
+                                    <!-- End row -->
+                                    </div>
+                                %end
+                    %movieIndex = movieIndex + 1
+            
+                    %end
+                        %end
+                    %end
+                    
+                    <!-- Här börjar popup-fönstret -->
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-lg" id="movieInfoModal">
+                            <div class="modal-content" style="background-color: black; color: white; box-shadow: 0 0px 50px rgba(255, 255, 255, 0.5)">
+                                <div class="row">
+                                    <h1 id="posterTitle">Titel</h1>
+                                    <h2 id="genreAge">Genre ålder</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12" style="padding: 0px;">
+                                        <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
+                                            <video class="embed-responsive-item" controls poster="http://soterixmedical.com/static/videos/videos/_play_button.png">
+                                                <source src="">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3 style="font-family:'Abel',sans-serif;">Beskrivning</h3>
+                                        <p id="desc"></p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h3 style="font-family:'Abel',sans-serif;">Skådespelare</h3>
+                                        <p id="actors"></p>
+                                        <h3 style="font-family:'Abel',sans-serif;">Regissör</h3>
+                                        <p id="directors"></p>
+                                    </div>
+                                </div>
+                        </div>
+                        </div>
+                        </div>
 </div>
-            <!--<div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="http://aka-m-p.maxplatform.com/20/57/78/HD-720p_1280x720_FnjtoI_1_se_1_50063_80210_120589_1111.mp4?u=2_105462"></iframe>
-            </div>-->
-        </div>
+        </div>                  
+        
         
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
