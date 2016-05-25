@@ -3,7 +3,7 @@
 function populateModal(movie){
     document.title = movie['movieName'] + " - FilmDags";
     $('#posterTitle').text(movie['movieName']);
-    $('#genreAge').text(movie['genreName'] + ", " + movie['age']);
+    $('#genreAge').text(movie['genreName'] + ", " + movie['age'] + " - " + movie['formattedLength']);
     $('.embed-responsive-item').attr('src', movie['highQualityTrailerLink']);
     var actorList = "";
     for (i = 0; i <= movie['actors'].length-1; i++){
