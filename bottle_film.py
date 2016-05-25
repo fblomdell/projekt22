@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from bottle import Bottle, run, route, template, url, view, static_file, request, response
+from bottle import Bottle, run, route, template, url, view, static_file, request, response, error
 from SfApi import getCities, getCinemas, getCinemaMovies, getMovieDetails, getMovies
 import json
 import datetime, time
@@ -17,6 +17,10 @@ def index():
 def server_static(path):
 
     return static_file(path, root="static")
+
+@error(404)
+def error404(error):
+    return 'Aint nothing to see here'
 
 @route("/movies", method="post")
 def cinema():
