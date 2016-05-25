@@ -270,7 +270,7 @@
                             <div class="modal-content" style="background-color: black; color: white; box-shadow: 0 0px 50px rgba(255, 255, 255, 0.5)">
                                 <div class="row">
                                     <h1 id="posterTitle">Titel</h1>
-                                    <h2 id="genreAge">Genre ålder</h2>
+                                    <h2 id="genreAge">Genre ålder tid</h2>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12" style="padding: 0px;">
