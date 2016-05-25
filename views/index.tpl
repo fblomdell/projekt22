@@ -273,7 +273,7 @@
                                     <h2 id="genreAge">Genre ålder tid</h2>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-12" style="padding: 0px;">
+                                    <div class="col-lg-12" style="padding-left: 100px;padding-right: 100px;">
                                         <div class="embed-responsive embed-responsive-16by9 trailerEmbed">
                                             <video class="embed-responsive-item" controls poster="http://soterixmedical.com/static/videos/videos/_play_button.png">
                                                 <source src="">
@@ -283,13 +283,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <h3 style="font-family:'Abel',sans-serif;">Beskrivning</h3>
-                                        <p id="desc"></p>
+                                        <h4 style="font-family:'Abel',sans-serif;">Beskrivning</h4>
+                                        <p id="desc" style="font-size:12px;"></p>
                                     </div>
                                     <div class="col-lg-6">
-                                        <h3 style="font-family:'Abel',sans-serif;">Skådespelare</h3>
+                                        <h4 style="font-family:'Abel',sans-serif;">Skådespelare</h4>
                                         <p id="actors"></p>
-                                        <h3 style="font-family:'Abel',sans-serif;">Regissör</h3>
+                                        <h4 style="font-family:'Abel',sans-serif;">Regissör</h4>
                                         <p id="directors"></p>
                                     </div>
                                 </div>
