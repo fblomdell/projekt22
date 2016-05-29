@@ -1,11 +1,9 @@
-# projekt22
-Här finns det information om vårt dagliga project22 @project22 #project22
+# Projekt22
 
-En ändring!
-=======
+Ett exempel på hur man kan presentera aktuella biofilmer på ett snyggt och enkelt sätt. Ger användare möjligheten att få en snabb överblick på dagens bioföreställningar och möjligheten till att boka en.
 
-asdf changes
-=======
-En ändring!
->>>>>>> origin/master
->>>>>>> Stashed changes
+# Installation
+1. Ladda hem python
+2. Ladda hem modulen requests. På mac: I terminalen skriv in, pip install requests
+3. Kör bottle_film.py
+4. Gå ut på localhost:8080
