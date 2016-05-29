@@ -17,7 +17,9 @@
         <title>FilmDags</title>
        
     </head>
-    <header>
+
+    <body>
+            <header>
         
         <h1>FILMDAGS</h1>
        %firstVisit = True
@@ -25,7 +27,7 @@
             <div class="well cityCinemaBox">
                 <form action="/movies" method="post">
                     <div class="form-group col-md-6">
-                        <select class="form-control" onchange="this.form.submit(); $('.sk-circle').show()" name="city">
+                        <select id="autoCity" class="form-control" onchange="this.form.submit(); $('.sk-circle').show()" name="city">
                             <option value="" disabled selected>1. Välj stad</option>
                             %try:
                                 <!--{{!cityID}}-->
@@ -72,7 +74,6 @@
                
             </div>
     </header>
-    <body>
         
         <!-- Behövs för att skicka filminfo till popup (måste finnas ett bättre sätt) -->   
         
@@ -116,7 +117,6 @@
                     %else:
                         %movieIndex = 0
                         %for movieID, movie in sortedList.items():
-                            %print len(sortedList.items())
                             %if movieIndex == len(sortedList.items()) and movieIndex % 6 != 5:
                                 </div>
                             %end

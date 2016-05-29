@@ -6,6 +6,7 @@
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="{{ url('static', path='popuptest.js') }}"></script>
+<script src="{{ url('static', path='geo.js') }}"></script>
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='bootstrap-theme.css') }}">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ url('static', path='newstyle.css') }}?v=1.1">
@@ -20,7 +21,6 @@
     <header>
         
         <h1>FILMDAGS</h1>
-       %firstVisit = True
         
     </header>
     <body>
@@ -37,9 +37,9 @@
                 
             <hr>
             <div class="row citiesCinemaDropdown">
-                <form action="/movies" method="post">
+                <form id="formtastic" action="/movies" method="post">
                 <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-lg-4 col-lg-offset-2" style="margin-bottom: 5px;">
-                    <select class="form-control" onchange="this.form.submit(); $('.sk-circle').show()" name="city">
+                    <select id="autoCity" class="form-control" onchange="this.form.submit(); $('.sk-circle').show()" name="city">
                             <option value="" disabled selected>1. Välj stad</option>
                             %try:
                                 <!--{{!cityID}}-->
@@ -53,7 +53,7 @@
                                     %if cityID == city['id']:
                                         <option value="{{city['id']}}" selected>{{city['name']}}</option>
                                         %chosenCity = city
-                                        %firstVisit = False
+                                        
                                     %else:
                                         <option value="{{city['id']}}">{{city['name']}}</option> 
                                     %end
@@ -84,13 +84,13 @@
                 </div>
                 </form>
             </div>
-            %if firstVisit == True:
-                <div id="frontpage_text" style="text-align: center; margin-top: 30px; margin-left:0px;">
+            
+                <div id="frontpage_text">
                     
-               Boka biljetter snabbt och enkelt till dagens visningar hos SF. 
-<p>Testa själv! Börja med att välja stad, följt av biograf.</p>
+                    <p>Boka biljetter snabbt och enkelt till dagens visningar hos SF.<br>
+Testa själv! Börja med att välja stad, följt av biograf.</p>
                 </div>
-                %end
+                
                 
                     <div class="sk-circle" style="display: none;">
         <div class="sk-circle1 sk-child"></div>

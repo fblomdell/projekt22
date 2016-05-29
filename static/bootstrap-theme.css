@@ -1353,7 +1353,7 @@ html {
 
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.42857143;
     color: #333;
     background-color: #000;
@@ -1725,7 +1725,7 @@ dd {
 
 abbr[data-original-title],abbr[title] {
     cursor: help;
-    border-bottom: 1px dotted #777;
+    border-bottom: 1px dotted #000;
 }
 
 .initialism {
