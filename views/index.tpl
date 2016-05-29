@@ -117,7 +117,6 @@
                     %else:
                         %movieIndex = 0
                         %for movieID, movie in sortedList.items():
-                            %print len(sortedList.items())
                             %if movieIndex == len(sortedList.items()) and movieIndex % 6 != 5:
                                 </div>
                             %end
