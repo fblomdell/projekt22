@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from bottle import Bottle, run, route, template, url, view, static_file, request, response, error
+from bottle import Bottle, run, route, template, url, view, static_file, request, response, error, default_app
 from SfApi import getCities, getCinemas, getCinemaMovies, getMovieDetails, getMovies
 import json
 import datetime, time
@@ -141,4 +141,5 @@ def new_movie_window():
 
 
 
-run(host="localhost", port=8080, debug=True)
+application = default_app()
+#run(host="localhost", port=8080, debug=True)
