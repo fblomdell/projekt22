@@ -20,3 +20,17 @@ bottle.pyc
 bottle.pyc
 
 bottle.pyc
+
+*.plist
+
+SfApi.app/Contents/MacOS/Python
+
+SfApi.app/Contents/PkgInfo
+
+SfApi.app/Contents/MacOS/SfApi
+
+SfApi.app/Contents/Resources/__argvemulator_SfApi.py
+
+SfApi.app/Contents/Resources/PythonApplet.icns
+
+SfApi.app/Contents/Resources/SfApi.py

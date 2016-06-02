@@ -1,16 +1,22 @@
 # -*- coding: utf-8 -*-
 
+<<<<<<< Updated upstream
 from bottle import Bottle, run, route, template, url, view, static_file, request, response, error
+=======
+from bottle import Bottle, run, route, template, url, view, static_file, request, response, default_app
+>>>>>>> Stashed changes
 from SfApi import getCities, getCinemas, getCinemaMovies, getMovieDetails, getMovies
 import json
 import datetime, time
 from time import strftime
+
 
 @route("/")
 #@view("index")
 def index():
     
     allCities = getCities()
+    print allCities
     return template('start', url=url, allCities=allCities)
 
 @route("/static/:path#.+#", name="static")
@@ -140,5 +146,5 @@ def new_movie_window():
     return template('movie', url=url, movieInfo=movieDetails, image=newPoster)
 
 
-
+application = default_app()
 run(host="localhost", port=8080, debug=True)
