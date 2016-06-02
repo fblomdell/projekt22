@@ -1,9 +1,10 @@
-﻿import requests, json, datetime, time
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import requests, json, datetime, time
 from time import gmtime, strftime
 from datetime import timedelta
 
-
-# -*- coding: utf-8 -*-
 
 def auth():
     #username = 'SFbioAPI'
@@ -15,24 +16,41 @@ def auth():
     
     headers = {
     'X-SF-Iphone-Version': '5.5.0',
+<<<<<<< HEAD
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.3.1; Scale/2.00)',
+=======
+    'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
+>>>>>>> development
     'Authorization': 'Basic U0ZiaW9BUEk6YlNGNVBGSGNSNFoz'
     }
     
     response = requests.get(url, headers=headers)
     
     if response.status_code == 200:
+<<<<<<< HEAD
         print("Connected to SF")
         print('response code: ' +str(response.status_code))
         
     else:
         print('Problem connecting to server')
         print('response code: ' +str(response.status_code)) 
+=======
+        #print "Connected to SF"
+        #print 'response code: ' +str(response.status_code)
+        
+    else:
+        #print 'Problem connecting to server'
+        #print 'response code: ' +str(response.status_code) 
+>>>>>>> development
 
 def makeCall(urlPath):
     #baseurl + urlPath = complete url to server
     baseUrl = 'https://mobilebackend.sfbio.se/services/5/'
+<<<<<<< HEAD
     print(baseUrl+urlPath)
+=======
+    #print baseUrl+urlPath
+>>>>>>> development
     headers = {
     'X-SF-Iphone-Version': '5.5.0',
     'User-Agent': 'SFBio/5.3.0 (iPhone; iOS 9.2.1; Scale/2.00)',
